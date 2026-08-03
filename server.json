@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "sh.handover/handover",
+  "title": "Handover",
+  "description": "Shared, versioned context that humans and AI agents can publish, review, annotate, and continue.",
+  "repository": {
+    "url": "https://github.com/44-pixels/handover-mcp",
+    "source": "github"
+  },
+  "version": "1.16.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://handover.sh/api/mcp"
+    }
+  ]
+}
