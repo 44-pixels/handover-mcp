@@ -53,6 +53,26 @@ Add this to `.cursor/mcp.json`:
 }
 ```
 
+## Command-line client
+
+The dependency-free Handover CLI supports the same durable workflow from a
+terminal:
+
+```bash
+npm install --global handover-sh
+handover login
+handover search "billing migration"
+handover pull <slug-or-url> --out ./continued-work
+handover publish ./report --title "Weekly report"
+```
+
+The publishable source and package metadata live in [`cli/`](cli/). Until the
+npm release is available, use the audited direct installer:
+
+```bash
+curl -fsSL https://handover.sh/install.sh | sh
+```
+
 ## What agents can do
 
 Connected agents can:
@@ -94,11 +114,11 @@ codex mcp add handover \
 
 ## Source and support
 
-The Handover application source is maintained in a private repository. This
-public repository intentionally contains connection metadata and documentation,
-not the hosted service implementation.
+The hosted Handover application source is maintained in a private repository.
+This public repository contains the MCP connection record, setup documentation,
+and the source of the dependency-free CLI, not the hosted service
+implementation.
 
 Report connection or documentation problems through
 [GitHub Issues](https://github.com/44-pixels/handover-mcp/issues). Report
 security concerns using the process in [SECURITY.md](SECURITY.md).
-

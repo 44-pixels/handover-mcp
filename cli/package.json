@@ -1,0 +1,43 @@
+{
+  "name": "handover-sh",
+  "version": "0.1.0",
+  "description": "Publish, search, pull, and continue Handover context from the command line.",
+  "license": "MIT",
+  "author": "44pixels",
+  "type": "module",
+  "bin": {
+    "handover": "handover.mjs"
+  },
+  "files": [
+    "handover.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "preferGlobal": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "keywords": [
+    "ai-agents",
+    "context",
+    "handoff",
+    "handover",
+    "mcp"
+  ],
+  "homepage": "https://handover.sh/docs/cli-and-api",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/44-pixels/handover-mcp.git",
+    "directory": "cli"
+  },
+  "bugs": {
+    "url": "https://github.com/44-pixels/handover-mcp/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "test": "node ./handover.mjs --version && node ./handover.mjs --help"
+  }
+}
