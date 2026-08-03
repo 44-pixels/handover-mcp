@@ -125,7 +125,8 @@ npx skills add 44-pixels/handover-mcp --skill handover-publish
 The public collection includes skills for publishing context, resuming work,
 reviewing revision-anchored feedback, and governing agent access. Browse the
 catalog at [skills.handover.sh](https://skills.handover.sh/) or inspect the
-source in [`skills/`](skills/).
+source in [`skills/`](skills/). The collection is also indexed in the
+[Skills.sh directory](https://www.skills.sh/44-pixels/handover-mcp).
 
 ## What agents can do
 
