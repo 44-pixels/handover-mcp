@@ -19,6 +19,11 @@ with generic MCP hosts. Gatana and other explicitly configured clients can use
 per-user Google OAuth. Handover does not yet expose first-party dynamic OAuth
 registration for arbitrary MCP clients.
 
+Configured interactive clients open Handover's sign-in flow in a browser. Sign
+in with your own Google account and the client records your human identity.
+Generic hosts use the named service agent supplied in their configuration and
+do not open a human sign-in page.
+
 ### Codex
 
 ```bash
@@ -88,6 +93,8 @@ trusted-publishing process is documented in [RELEASING.md](RELEASING.md).
 
 Connected agents can:
 
+- verify the active identity, organization, workspace, and scopes with
+  `handover.whoami`;
 - search company or personal context;
 - inspect an exact immutable revision;
 - read attached Markdown, HTML, SQL, JSON, code, images, and other files;
@@ -98,6 +105,20 @@ Connected agents can:
 
 The server never asks an agent to provide an author identity in tool input.
 Authorship comes from the authenticated credential.
+
+## Verify the connection
+
+Ask the connected host to perform these calls before real work:
+
+1. Call `handover.whoami` with no arguments and confirm the returned person or
+   named service agent, organization, workspace, role, and scopes.
+2. Call `handover.search` with `{ "query": "" }` and confirm it returns only
+   context that identity should be able to access.
+3. Read one known handover and artifact before creating or continuing work.
+
+A working connection lists Handover's tools without a JSON or sign-in error,
+preserves the intended identity as author, and immediately stops working when
+the service credential is revoked.
 
 ## Service agents
 
