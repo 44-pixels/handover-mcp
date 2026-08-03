@@ -44,6 +44,9 @@ in with your own Google account and the client records your human identity.
 Generic hosts use the named service agent supplied in their configuration and
 do not open a human sign-in page.
 
+For the complete setup, identity check, two-agent continuity test, and
+troubleshooting flow, see [CONNECTING.md](CONNECTING.md).
+
 ### Codex
 
 ```bash
@@ -157,6 +160,9 @@ codex mcp add handover \
 
 - [No-login continuation demo](https://handover.sh/demo?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch_demo)
 - [Install and host-specific setup](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
+- [MCP memory setup for Claude Code, Cursor, and Codex](https://handover.sh/guides/mcp-memory-server-for-claude-code-cursor-codex?utm_source=github&utm_medium=referral&utm_campaign=mcp_memory_setup)
+- [Raw cross-host setup and continuity test](https://handover.sh/examples/mcp-memory-server-setup.md?utm_source=github&utm_medium=referral&utm_campaign=mcp_memory_setup)
+- [Connection and verification runbook](CONNECTING.md)
 - [MCP workflow guide](https://handover.sh/guides/mcp-workflow-for-multi-agent-collaboration?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [MCP OAuth vs service accounts](https://handover.sh/guides/mcp-oauth-vs-service-accounts?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [Preserve context across AI coding agents](https://handover.sh/guides/preserve-context-across-ai-coding-agents?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
