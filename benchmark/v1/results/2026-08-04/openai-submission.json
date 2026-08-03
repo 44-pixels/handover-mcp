@@ -1,0 +1,260 @@
+{
+  "benchmarkVersion": "1.0.0-pilot",
+  "system": {
+    "provider": "OpenAI",
+    "model": "Codex",
+    "modelVersion": "gpt-5.6-terra",
+    "temperature": null,
+    "runAt": "2026-08-04T00:00:00+03:00",
+    "host": "codex-cli 0.146.0",
+    "retryPolicy": "No retries; strict JSON parse; malformed responses score as missing."
+  },
+  "answers": [
+    {
+      "caseId": "incident-cache-headers",
+      "condition": "transcript",
+      "answer": {
+        "objective": "obj_restore_safe",
+        "currentState": [
+          "state_rollback_done",
+          "state_patch_staging"
+        ],
+        "decisions": [
+          "dec_route_scope"
+        ],
+        "evidence": [
+          "ev_trace_1842",
+          "ev_staging_27"
+        ],
+        "constraints": [
+          "con_change_window",
+          "con_no_schema"
+        ],
+        "nextAction": "next_validate_headers",
+        "owner": "owner_mina",
+        "openQuestions": [
+          "q_vary_header"
+        ]
+      }
+    },
+    {
+      "caseId": "incident-cache-headers",
+      "condition": "memory",
+      "answer": {
+        "objective": "Restore correct API caching without causing another production regression.",
+        "currentState": [
+          "The unsafe global cache rule was rolled back.",
+          "A route-scoped header patch is deployed to staging."
+        ],
+        "decisions": [
+          "Apply caching only to the public catalogue route, not authenticated API responses."
+        ],
+        "evidence": [
+          "Trace 1842 shows an authenticated response served with the public cache key.",
+          "Staging run 27 shows the catalogue route cached and account routes marked private."
+        ],
+        "constraints": [
+          "Production changes require the 14:00 UTC change window and on-call approval.",
+          "Do not change the database schema during the incident."
+        ],
+        "nextAction": "Run the authenticated-route header matrix in staging and attach the output for on-call approval.",
+        "owner": "Mina, incident commander.",
+        "openQuestions": [
+          "Does the catalogue response still vary by locale after the patch?"
+        ]
+      }
+    },
+    {
+      "caseId": "incident-cache-headers",
+      "condition": "handoff",
+      "answer": {
+        "objective": "obj_restore_safe",
+        "currentState": [
+          "state_rollback_done",
+          "state_patch_staging"
+        ],
+        "decisions": [
+          "dec_route_scope"
+        ],
+        "evidence": [
+          "ev_trace_1842",
+          "ev_staging_27"
+        ],
+        "constraints": [
+          "con_change_window",
+          "con_no_schema"
+        ],
+        "nextAction": "next_validate_headers",
+        "owner": "owner_mina",
+        "openQuestions": [
+          "q_vary_header"
+        ]
+      }
+    },
+    {
+      "caseId": "research-onboarding-dropoff",
+      "condition": "transcript",
+      "answer": {
+        "objective": "obj_explain_dropoff",
+        "currentState": [
+          "state_funnel_verified",
+          "state_interviews_pending"
+        ],
+        "decisions": [
+          "dec_eligible_cohort"
+        ],
+        "evidence": [
+          "ev_query_6f2",
+          "ev_interviews_5"
+        ],
+        "constraints": [
+          "con_no_pii",
+          "con_label_hypothesis"
+        ],
+        "nextAction": "next_code_transcripts",
+        "owner": "owner_sam",
+        "openQuestions": [
+          "q_theme_stage"
+        ]
+      }
+    },
+    {
+      "caseId": "research-onboarding-dropoff",
+      "condition": "memory",
+      "answer": {
+        "objective": "obj_explain_dropoff",
+        "currentState": [
+          "state_funnel_verified",
+          "state_interviews_pending"
+        ],
+        "decisions": [
+          "dec_eligible_cohort"
+        ],
+        "evidence": [
+          "ev_query_6f2",
+          "ev_interviews_5"
+        ],
+        "constraints": [
+          "con_no_pii",
+          "con_label_hypothesis"
+        ],
+        "nextAction": "next_code_transcripts",
+        "owner": "owner_sam",
+        "openQuestions": [
+          "q_theme_stage"
+        ]
+      }
+    },
+    {
+      "caseId": "research-onboarding-dropoff",
+      "condition": "handoff",
+      "answer": {
+        "objective": "obj_explain_dropoff",
+        "currentState": [
+          "state_funnel_verified",
+          "state_interviews_pending"
+        ],
+        "decisions": [
+          "dec_eligible_cohort"
+        ],
+        "evidence": [
+          "ev_query_6f2",
+          "ev_interviews_5"
+        ],
+        "constraints": [
+          "con_no_pii",
+          "con_label_hypothesis"
+        ],
+        "nextAction": "next_code_transcripts",
+        "owner": "owner_sam",
+        "openQuestions": [
+          "q_theme_stage"
+        ]
+      }
+    },
+    {
+      "caseId": "warehouse-refund-model",
+      "condition": "transcript",
+      "answer": {
+        "objective": "obj_refund_accuracy",
+        "currentState": [
+          "state_query_draft",
+          "state_fixture_pass"
+        ],
+        "decisions": [
+          "dec_refund_line_grain"
+        ],
+        "evidence": [
+          "ev_fixture_6",
+          "ev_diff_82"
+        ],
+        "constraints": [
+          "con_utc",
+          "con_exclude_test",
+          "con_no_backfill"
+        ],
+        "nextAction": "next_finance_compare",
+        "owner": "owner_priya",
+        "openQuestions": [
+          "q_finance_threshold"
+        ]
+      }
+    },
+    {
+      "caseId": "warehouse-refund-model",
+      "condition": "memory",
+      "answer": {
+        "objective": "obj_refund_accuracy",
+        "currentState": [
+          "state_query_draft",
+          "state_fixture_pass"
+        ],
+        "decisions": [
+          "dec_refund_line_grain"
+        ],
+        "evidence": [
+          "ev_fixture_6",
+          "ev_diff_82"
+        ],
+        "constraints": [
+          "con_utc",
+          "con_exclude_test",
+          "con_no_backfill"
+        ],
+        "nextAction": "next_finance_compare",
+        "owner": "owner_priya",
+        "openQuestions": [
+          "q_finance_threshold"
+        ]
+      }
+    },
+    {
+      "caseId": "warehouse-refund-model",
+      "condition": "handoff",
+      "answer": {
+        "objective": "obj_refund_accuracy",
+        "currentState": [
+          "state_query_draft",
+          "state_fixture_pass"
+        ],
+        "decisions": [
+          "dec_refund_line_grain"
+        ],
+        "evidence": [
+          "ev_fixture_6",
+          "ev_diff_82"
+        ],
+        "constraints": [
+          "con_utc",
+          "con_exclude_test",
+          "con_no_backfill"
+        ],
+        "nextAction": "next_finance_compare",
+        "owner": "owner_priya",
+        "openQuestions": [
+          "q_finance_threshold"
+        ]
+      }
+    }
+  ]
+}

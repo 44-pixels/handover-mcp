@@ -1,0 +1,239 @@
+{
+  "name": "AI Handoff Continuity Benchmark",
+  "version": "1.0.0-pilot",
+  "status": "open-pilot",
+  "license": "CC-BY-4.0",
+  "publishedAt": "2026-08-03",
+  "description": "A deterministic benchmark for testing whether a model can recover the state required to continue work from a transcript, compressed memory, or structured handoff.",
+  "answerSchema": {
+    "objective": "one candidate ID",
+    "currentState": "candidate ID array",
+    "decisions": "candidate ID array",
+    "evidence": "candidate ID array",
+    "constraints": "candidate ID array",
+    "nextAction": "one candidate ID",
+    "owner": "one candidate ID",
+    "openQuestions": "candidate ID array"
+  },
+  "rubric": {
+    "objective": 10,
+    "currentState": 20,
+    "decisions": 15,
+    "evidence": 15,
+    "constraints": 10,
+    "nextAction": 15,
+    "owner": 5,
+    "openQuestions": 10
+  },
+  "conditions": [
+    {
+      "id": "transcript",
+      "label": "Conversation transcript",
+      "description": "Chronological messages containing relevant state alongside superseded decisions and conversational noise."
+    },
+    {
+      "id": "memory",
+      "label": "Compressed memory",
+      "description": "A short free-form summary produced at a checkpoint, with some evidence and rationale omitted."
+    },
+    {
+      "id": "handoff",
+      "label": "Structured handoff",
+      "description": "An explicit continuation record separating current state, decisions, evidence, constraints, next action, ownership, and open questions."
+    }
+  ],
+  "cases": [
+    {
+      "id": "incident-cache-headers",
+      "title": "Production cache-header incident",
+      "domain": "software-operations",
+      "task": "Continue the incident response without repeating a failed mitigation or changing production before the remaining validation is complete.",
+      "candidates": {
+        "objective": [
+          { "id": "obj_restore_safe", "text": "Restore correct API caching without causing another production regression." },
+          { "id": "obj_raise_ttl", "text": "Increase every API cache TTL to ten minutes." },
+          { "id": "obj_replace_cdn", "text": "Replace the CDN before investigating further." }
+        ],
+        "currentState": [
+          { "id": "state_rollback_done", "text": "The unsafe global cache rule was rolled back." },
+          { "id": "state_patch_staging", "text": "A route-scoped header patch is deployed to staging." },
+          { "id": "state_patch_prod", "text": "The route-scoped patch is already deployed to production." },
+          { "id": "state_incident_closed", "text": "The incident is closed and needs no further validation." }
+        ],
+        "decisions": [
+          { "id": "dec_route_scope", "text": "Apply caching only to the public catalogue route, not authenticated API responses." },
+          { "id": "dec_global_rule", "text": "Keep the global CDN rule and exempt failures individually." },
+          { "id": "dec_disable_all", "text": "Disable all caching permanently." }
+        ],
+        "evidence": [
+          { "id": "ev_trace_1842", "text": "Trace 1842 shows an authenticated response served with the public cache key." },
+          { "id": "ev_staging_27", "text": "Staging run 27 shows the catalogue route cached and account routes marked private." },
+          { "id": "ev_sales_chart", "text": "The weekly sales chart increased after the incident." }
+        ],
+        "constraints": [
+          { "id": "con_change_window", "text": "Production changes require the 14:00 UTC change window and on-call approval." },
+          { "id": "con_no_schema", "text": "Do not change the database schema during the incident." },
+          { "id": "con_ship_immediately", "text": "Ship any mitigation immediately without approval." }
+        ],
+        "nextAction": [
+          { "id": "next_validate_headers", "text": "Run the authenticated-route header matrix in staging and attach the output for on-call approval." },
+          { "id": "next_reapply_global", "text": "Reapply the global cache rule in production." },
+          { "id": "next_close", "text": "Close the incident without another test." }
+        ],
+        "owner": [
+          { "id": "owner_mina", "text": "Mina, incident commander." },
+          { "id": "owner_lee", "text": "Lee, finance analyst." },
+          { "id": "owner_none", "text": "No owner is assigned." }
+        ],
+        "openQuestions": [
+          { "id": "q_vary_header", "text": "Does the catalogue response still vary by locale after the patch?" },
+          { "id": "q_vendor_contract", "text": "When does the CDN vendor contract renew?" },
+          { "id": "q_no_questions", "text": "There are no unresolved questions." }
+        ]
+      },
+      "expected": {
+        "objective": "obj_restore_safe",
+        "currentState": ["state_rollback_done", "state_patch_staging"],
+        "decisions": ["dec_route_scope"],
+        "evidence": ["ev_trace_1842", "ev_staging_27"],
+        "constraints": ["con_change_window", "con_no_schema"],
+        "nextAction": "next_validate_headers",
+        "owner": "owner_mina",
+        "openQuestions": ["q_vary_header"]
+      },
+      "contexts": {
+        "transcript": "09:02 Mina: Customers are seeing another account's stale preferences. Objective is to restore correct API caching without another regression. 09:08 Raj: Trace 1842 has the clue: an authenticated response was served with the public cache key. 09:13 Mina: Let's increase every API cache TTL to ten minutes while we inspect it. 09:24 Raj: I tried a global CDN rule. Error rate rose, so I rolled it back. The unsafe global rule is no longer active. 09:31 Lee: Weekly sales are up; unrelated but adding it here. 09:40 Mina: Decision changed. Cache only the public catalogue route. Authenticated API responses must remain private. Do not change database schema during this incident. 10:05 Raj: Route-scoped patch is in staging. Staging run 27 shows catalogue cached and account routes private. 10:11 Mina: Do not call this fixed yet. Production changes wait for the 14:00 UTC window and on-call approval. 10:16 Raj: One thing is unresolved: locale behavior. Does the catalogue response still vary by locale? 10:20 Mina: I own the next step. Run the authenticated-route header matrix in staging and attach output for my approval.",
+        "memory": "Cache incident: a global rule caused problems and was rolled back. A narrower patch is being tested. Mina is coordinating. Production should be handled carefully. There was a trace showing a cache-key issue, but the exact validation and remaining locale question were not retained.",
+        "handoff": "OBJECTIVE\nRestore correct API caching without causing another production regression.\n\nCURRENT STATE\n- Unsafe global cache rule rolled back.\n- Route-scoped header patch deployed to staging; not production.\n\nDECISION\nCache only the public catalogue route. Authenticated API responses remain private.\n\nEVIDENCE\n- Trace 1842: authenticated response served with public cache key.\n- Staging run 27: catalogue cached; account routes private.\n\nCONSTRAINTS\n- Production change only in the 14:00 UTC window with on-call approval.\n- No database schema changes during the incident.\n\nNEXT ACTION\nRun the authenticated-route header matrix in staging and attach output for approval.\n\nOWNER\nMina, incident commander.\n\nOPEN QUESTION\nDoes catalogue response still vary by locale?"
+      }
+    },
+    {
+      "id": "research-onboarding-dropoff",
+      "title": "Onboarding drop-off research",
+      "domain": "product-research",
+      "task": "Continue the analysis using the agreed cohort and avoid presenting an unvalidated explanation as a finding.",
+      "candidates": {
+        "objective": [
+          { "id": "obj_explain_dropoff", "text": "Identify why eligible new users abandon onboarding before completing business setup." },
+          { "id": "obj_redesign_brand", "text": "Redesign the product brand." },
+          { "id": "obj_maximize_installs", "text": "Maximize app installs regardless of activation." }
+        ],
+        "currentState": [
+          { "id": "state_funnel_verified", "text": "The event funnel has been verified for the eligible cohort." },
+          { "id": "state_interviews_pending", "text": "Five interview transcripts are collected but not yet coded." },
+          { "id": "state_cause_proven", "text": "Pricing concern is proven as the primary cause." },
+          { "id": "state_report_final", "text": "The research report is final." }
+        ],
+        "decisions": [
+          { "id": "dec_eligible_cohort", "text": "Use users eligible for the new onboarding flow after 15 July; exclude employees and test accounts." },
+          { "id": "dec_all_installs", "text": "Use every install since January, including employees." },
+          { "id": "dec_pricing_cause", "text": "Treat pricing concern as the confirmed explanation." }
+        ],
+        "evidence": [
+          { "id": "ev_query_6f2", "text": "Saved query 6f2 shows 54.1% reach completed intro and 18.9% complete business setup." },
+          { "id": "ev_interviews_5", "text": "Five interview transcripts mention uncertainty around business details, but coding is incomplete." },
+          { "id": "ev_store_rating", "text": "The app-store rating is 4.8." }
+        ],
+        "constraints": [
+          { "id": "con_no_pii", "text": "Do not export names, phone numbers, or transcript PII." },
+          { "id": "con_label_hypothesis", "text": "Label qualitative explanations as hypotheses until transcript coding is complete." },
+          { "id": "con_publish_names", "text": "Include participant names in the public report." }
+        ],
+        "nextAction": [
+          { "id": "next_code_transcripts", "text": "Code the five transcripts against the agreed taxonomy and compare themes with funnel stages." },
+          { "id": "next_ship_pricing", "text": "Ship a pricing redesign immediately." },
+          { "id": "next_buy_ads", "text": "Increase acquisition spend before finishing analysis." }
+        ],
+        "owner": [
+          { "id": "owner_sam", "text": "Sam, product researcher." },
+          { "id": "owner_finance", "text": "The finance team." },
+          { "id": "owner_none", "text": "No owner is assigned." }
+        ],
+        "openQuestions": [
+          { "id": "q_theme_stage", "text": "Which interview themes correspond to the business-search and verification stages?" },
+          { "id": "q_logo_color", "text": "Should the logo be blue?" },
+          { "id": "q_none", "text": "There are no unresolved questions." }
+        ]
+      },
+      "expected": {
+        "objective": "obj_explain_dropoff",
+        "currentState": ["state_funnel_verified", "state_interviews_pending"],
+        "decisions": ["dec_eligible_cohort"],
+        "evidence": ["ev_query_6f2", "ev_interviews_5"],
+        "constraints": ["con_no_pii", "con_label_hypothesis"],
+        "nextAction": "next_code_transcripts",
+        "owner": "owner_sam",
+        "openQuestions": ["q_theme_stage"]
+      },
+      "contexts": {
+        "transcript": "Monday 11:00 Sam: We need to identify why eligible new users abandon onboarding before business setup. 11:06 Jo: I pulled all installs since January, including staff. 11:12 Sam: That cohort is misleading. Final cohort decision: users eligible for the new flow after 15 July, excluding employees and test accounts. 11:33 Jo: Saved query 6f2 is checked against raw events. 54.1% complete intro and 18.9% complete business setup. Funnel is verified. 11:44 Sam: Five interviews repeatedly mention uncertainty about business details, so maybe pricing is the cause. 11:50 Jo: We have not coded them yet. Do not present any qualitative explanation as a finding. 12:05 Sam: Correct. Five transcripts are collected but coding is pending. Keep names, phone numbers, and other PII out of exports. 12:12 Jo: App-store rating is 4.8, probably unrelated. 12:25 Sam: Next I will code all five transcripts against the agreed taxonomy and compare themes with funnel stages. Open question is which themes map to business-search and verification. Until coding is complete, label explanations as hypotheses.",
+        "memory": "Onboarding funnel research is underway. The verified funnel has a large decline before business setup. Five users were interviewed and several seemed uncertain. Sam owns the analysis. Use a recent-user cohort and protect participant privacy. Next steps involve looking more closely at interview feedback.",
+        "handoff": "OBJECTIVE\nIdentify why eligible new users abandon onboarding before completing business setup.\n\nCURRENT STATE\n- Funnel verified for the agreed eligible cohort.\n- Five interview transcripts collected; coding is pending.\n\nDECISION\nCohort is users eligible for the new flow after 15 July, excluding employees and test accounts.\n\nEVIDENCE\n- Query 6f2: 54.1% complete intro; 18.9% complete business setup.\n- Five transcripts mention uncertainty around business details; this is not yet a coded finding.\n\nCONSTRAINTS\n- Do not export names, phone numbers, or transcript PII.\n- Treat qualitative explanations as hypotheses until coding is complete.\n\nNEXT ACTION\nCode five transcripts against the agreed taxonomy and compare themes with funnel stages.\n\nOWNER\nSam, product researcher.\n\nOPEN QUESTION\nWhich themes correspond to business-search and verification stages?"
+      }
+    },
+    {
+      "id": "warehouse-refund-model",
+      "title": "Warehouse refund model revision",
+      "domain": "data-analysis",
+      "task": "Continue the SQL model change with the approved grain, filters, and validation before merging.",
+      "candidates": {
+        "objective": [
+          { "id": "obj_refund_accuracy", "text": "Correct the daily refund model without double-counting partial refunds." },
+          { "id": "obj_delete_history", "text": "Delete historical refund data." },
+          { "id": "obj_replace_warehouse", "text": "Replace the analytics warehouse." }
+        ],
+        "currentState": [
+          { "id": "state_query_draft", "text": "The revised query is drafted on branch refund-grain-v2." },
+          { "id": "state_fixture_pass", "text": "The six-row edge-case fixture passes." },
+          { "id": "state_prod_merged", "text": "The model is merged and running in production." },
+          { "id": "state_backfill_done", "text": "The historical backfill is complete." }
+        ],
+        "decisions": [
+          { "id": "dec_refund_line_grain", "text": "Model one row per refund line and aggregate to order-day only in the final CTE." },
+          { "id": "dec_order_grain", "text": "Keep one row per order throughout the model." },
+          { "id": "dec_latest_only", "text": "Discard all but the latest refund event." }
+        ],
+        "evidence": [
+          { "id": "ev_fixture_6", "text": "Fixture refund_edges.csv covers full, partial, repeated, and reversed refunds and currently passes." },
+          { "id": "ev_diff_82", "text": "The 30-day comparison shows an 82-order difference concentrated in repeated partial refunds." },
+          { "id": "ev_dashboard_color", "text": "The dashboard uses green bars." }
+        ],
+        "constraints": [
+          { "id": "con_utc", "text": "All day boundaries remain UTC." },
+          { "id": "con_exclude_test", "text": "Exclude test merchants using dim_merchant.is_test." },
+          { "id": "con_no_backfill", "text": "Do not start the historical backfill until Finance signs off on the comparison." }
+        ],
+        "nextAction": [
+          { "id": "next_finance_compare", "text": "Send the 30-day old-vs-new comparison and the 82-order sample to Finance for sign-off." },
+          { "id": "next_merge_now", "text": "Merge and start the backfill immediately." },
+          { "id": "next_change_timezone", "text": "Change reporting boundaries to local time." }
+        ],
+        "owner": [
+          { "id": "owner_priya", "text": "Priya, analytics engineer." },
+          { "id": "owner_support", "text": "Customer support." },
+          { "id": "owner_none", "text": "No owner is assigned." }
+        ],
+        "openQuestions": [
+          { "id": "q_finance_threshold", "text": "Will Finance accept the 82-order historical difference as correction rather than variance?" },
+          { "id": "q_chart_font", "text": "Which chart font should be used?" },
+          { "id": "q_none", "text": "There are no unresolved questions." }
+        ]
+      },
+      "expected": {
+        "objective": "obj_refund_accuracy",
+        "currentState": ["state_query_draft", "state_fixture_pass"],
+        "decisions": ["dec_refund_line_grain"],
+        "evidence": ["ev_fixture_6", "ev_diff_82"],
+        "constraints": ["con_utc", "con_exclude_test", "con_no_backfill"],
+        "nextAction": "next_finance_compare",
+        "owner": "owner_priya",
+        "openQuestions": ["q_finance_threshold"]
+      },
+      "contexts": {
+        "transcript": "Tue 14:02 Priya: Daily refunds are overstated when an order has repeated partial refunds. Goal is to fix the model without double-counting. 14:10 Max: Could keep order grain and select latest event. 14:18 Priya: Tried that; it loses reversals. Decision: one row per refund line, aggregate to order-day only in the final CTE. 14:35 Max: refund_edges.csv now has six rows for full, partial, repeated, and reversed cases. All pass. 14:48 Priya: Revised query is on branch refund-grain-v2, not merged. Keep UTC day boundaries and continue excluding test merchants through dim_merchant.is_test. 15:03 Max: Dashboard bars are green. 15:16 Priya: 30-day old-vs-new comparison differs by 82 orders, concentrated in repeated partial refunds. This looks correct but Finance must sign off. Do not start backfill before that. 15:25 Priya: I own the next action: send Finance the comparison and 82-order sample. Open question: will they accept the difference as a correction rather than variance?",
+        "memory": "Refund model work is nearly ready. Priya has a branch with a new grain and edge cases pass. A 30-day comparison found a small difference. Keep existing reporting conventions and merchant filters. Finance should review before rollout.",
+        "handoff": "OBJECTIVE\nCorrect the daily refund model without double-counting partial refunds.\n\nCURRENT STATE\n- Revised query drafted on refund-grain-v2; not merged.\n- Six-row refund edge-case fixture passes.\n\nDECISION\nUse one row per refund line; aggregate to order-day only in final CTE.\n\nEVIDENCE\n- refund_edges.csv covers full, partial, repeated, and reversed refunds; all pass.\n- 30-day comparison differs by 82 orders, concentrated in repeated partial refunds.\n\nCONSTRAINTS\n- UTC day boundaries.\n- Exclude test merchants with dim_merchant.is_test.\n- No historical backfill before Finance sign-off.\n\nNEXT ACTION\nSend the old-vs-new comparison and 82-order sample to Finance.\n\nOWNER\nPriya, analytics engineer.\n\nOPEN QUESTION\nWill Finance accept the 82-order difference as a correction rather than variance?"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"objective":"obj_explain_dropoff","currentState":["state_funnel_verified","state_interviews_pending"],"decisions":["dec_eligible_cohort"],"evidence":["ev_query_6f2","ev_interviews_5"],"constraints":["con_no_pii","con_label_hypothesis"],"nextAction":"next_code_transcripts","owner":"owner_sam","openQuestions":["q_theme_stage"]}

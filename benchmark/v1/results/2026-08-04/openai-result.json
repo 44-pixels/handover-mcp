@@ -1,0 +1,411 @@
+{
+  "benchmark": "AI Handoff Continuity Benchmark",
+  "benchmarkVersion": "1.0.0-pilot",
+  "submission": {
+    "provider": "OpenAI",
+    "model": "Codex",
+    "modelVersion": "gpt-5.6-terra",
+    "temperature": null,
+    "runAt": "2026-08-04T00:00:00+03:00",
+    "host": "codex-cli 0.146.0",
+    "retryPolicy": "No retries; strict JSON parse; malformed responses score as missing."
+  },
+  "scoredAt": "2026-08-03T21:08:40.228Z",
+  "overallScore": 88.89,
+  "answered": 9,
+  "total": 9,
+  "byCondition": [
+    {
+      "condition": "transcript",
+      "label": "Conversation transcript",
+      "score": 100,
+      "answered": 3,
+      "total": 3
+    },
+    {
+      "condition": "memory",
+      "label": "Compressed memory",
+      "score": 66.67,
+      "answered": 3,
+      "total": 3
+    },
+    {
+      "condition": "handoff",
+      "label": "Structured handoff",
+      "score": 100,
+      "answered": 3,
+      "total": 3
+    }
+  ],
+  "rows": [
+    {
+      "caseId": "incident-cache-headers",
+      "caseTitle": "Production cache-header incident",
+      "condition": "transcript",
+      "answered": true,
+      "score": 100,
+      "dimensions": {
+        "objective": {
+          "score": 10,
+          "maximum": 10
+        },
+        "currentState": {
+          "score": 20,
+          "maximum": 20
+        },
+        "decisions": {
+          "score": 15,
+          "maximum": 15
+        },
+        "evidence": {
+          "score": 15,
+          "maximum": 15
+        },
+        "constraints": {
+          "score": 10,
+          "maximum": 10
+        },
+        "nextAction": {
+          "score": 15,
+          "maximum": 15
+        },
+        "owner": {
+          "score": 5,
+          "maximum": 5
+        },
+        "openQuestions": {
+          "score": 10,
+          "maximum": 10
+        }
+      }
+    },
+    {
+      "caseId": "incident-cache-headers",
+      "caseTitle": "Production cache-header incident",
+      "condition": "memory",
+      "answered": true,
+      "score": 0,
+      "dimensions": {
+        "objective": {
+          "score": 0,
+          "maximum": 10
+        },
+        "currentState": {
+          "score": 0,
+          "maximum": 20
+        },
+        "decisions": {
+          "score": 0,
+          "maximum": 15
+        },
+        "evidence": {
+          "score": 0,
+          "maximum": 15
+        },
+        "constraints": {
+          "score": 0,
+          "maximum": 10
+        },
+        "nextAction": {
+          "score": 0,
+          "maximum": 15
+        },
+        "owner": {
+          "score": 0,
+          "maximum": 5
+        },
+        "openQuestions": {
+          "score": 0,
+          "maximum": 10
+        }
+      }
+    },
+    {
+      "caseId": "incident-cache-headers",
+      "caseTitle": "Production cache-header incident",
+      "condition": "handoff",
+      "answered": true,
+      "score": 100,
+      "dimensions": {
+        "objective": {
+          "score": 10,
+          "maximum": 10
+        },
+        "currentState": {
+          "score": 20,
+          "maximum": 20
+        },
+        "decisions": {
+          "score": 15,
+          "maximum": 15
+        },
+        "evidence": {
+          "score": 15,
+          "maximum": 15
+        },
+        "constraints": {
+          "score": 10,
+          "maximum": 10
+        },
+        "nextAction": {
+          "score": 15,
+          "maximum": 15
+        },
+        "owner": {
+          "score": 5,
+          "maximum": 5
+        },
+        "openQuestions": {
+          "score": 10,
+          "maximum": 10
+        }
+      }
+    },
+    {
+      "caseId": "research-onboarding-dropoff",
+      "caseTitle": "Onboarding drop-off research",
+      "condition": "transcript",
+      "answered": true,
+      "score": 100,
+      "dimensions": {
+        "objective": {
+          "score": 10,
+          "maximum": 10
+        },
+        "currentState": {
+          "score": 20,
+          "maximum": 20
+        },
+        "decisions": {
+          "score": 15,
+          "maximum": 15
+        },
+        "evidence": {
+          "score": 15,
+          "maximum": 15
+        },
+        "constraints": {
+          "score": 10,
+          "maximum": 10
+        },
+        "nextAction": {
+          "score": 15,
+          "maximum": 15
+        },
+        "owner": {
+          "score": 5,
+          "maximum": 5
+        },
+        "openQuestions": {
+          "score": 10,
+          "maximum": 10
+        }
+      }
+    },
+    {
+      "caseId": "research-onboarding-dropoff",
+      "caseTitle": "Onboarding drop-off research",
+      "condition": "memory",
+      "answered": true,
+      "score": 100,
+      "dimensions": {
+        "objective": {
+          "score": 10,
+          "maximum": 10
+        },
+        "currentState": {
+          "score": 20,
+          "maximum": 20
+        },
+        "decisions": {
+          "score": 15,
+          "maximum": 15
+        },
+        "evidence": {
+          "score": 15,
+          "maximum": 15
+        },
+        "constraints": {
+          "score": 10,
+          "maximum": 10
+        },
+        "nextAction": {
+          "score": 15,
+          "maximum": 15
+        },
+        "owner": {
+          "score": 5,
+          "maximum": 5
+        },
+        "openQuestions": {
+          "score": 10,
+          "maximum": 10
+        }
+      }
+    },
+    {
+      "caseId": "research-onboarding-dropoff",
+      "caseTitle": "Onboarding drop-off research",
+      "condition": "handoff",
+      "answered": true,
+      "score": 100,
+      "dimensions": {
+        "objective": {
+          "score": 10,
+          "maximum": 10
+        },
+        "currentState": {
+          "score": 20,
+          "maximum": 20
+        },
+        "decisions": {
+          "score": 15,
+          "maximum": 15
+        },
+        "evidence": {
+          "score": 15,
+          "maximum": 15
+        },
+        "constraints": {
+          "score": 10,
+          "maximum": 10
+        },
+        "nextAction": {
+          "score": 15,
+          "maximum": 15
+        },
+        "owner": {
+          "score": 5,
+          "maximum": 5
+        },
+        "openQuestions": {
+          "score": 10,
+          "maximum": 10
+        }
+      }
+    },
+    {
+      "caseId": "warehouse-refund-model",
+      "caseTitle": "Warehouse refund model revision",
+      "condition": "transcript",
+      "answered": true,
+      "score": 100,
+      "dimensions": {
+        "objective": {
+          "score": 10,
+          "maximum": 10
+        },
+        "currentState": {
+          "score": 20,
+          "maximum": 20
+        },
+        "decisions": {
+          "score": 15,
+          "maximum": 15
+        },
+        "evidence": {
+          "score": 15,
+          "maximum": 15
+        },
+        "constraints": {
+          "score": 10,
+          "maximum": 10
+        },
+        "nextAction": {
+          "score": 15,
+          "maximum": 15
+        },
+        "owner": {
+          "score": 5,
+          "maximum": 5
+        },
+        "openQuestions": {
+          "score": 10,
+          "maximum": 10
+        }
+      }
+    },
+    {
+      "caseId": "warehouse-refund-model",
+      "caseTitle": "Warehouse refund model revision",
+      "condition": "memory",
+      "answered": true,
+      "score": 100,
+      "dimensions": {
+        "objective": {
+          "score": 10,
+          "maximum": 10
+        },
+        "currentState": {
+          "score": 20,
+          "maximum": 20
+        },
+        "decisions": {
+          "score": 15,
+          "maximum": 15
+        },
+        "evidence": {
+          "score": 15,
+          "maximum": 15
+        },
+        "constraints": {
+          "score": 10,
+          "maximum": 10
+        },
+        "nextAction": {
+          "score": 15,
+          "maximum": 15
+        },
+        "owner": {
+          "score": 5,
+          "maximum": 5
+        },
+        "openQuestions": {
+          "score": 10,
+          "maximum": 10
+        }
+      }
+    },
+    {
+      "caseId": "warehouse-refund-model",
+      "caseTitle": "Warehouse refund model revision",
+      "condition": "handoff",
+      "answered": true,
+      "score": 100,
+      "dimensions": {
+        "objective": {
+          "score": 10,
+          "maximum": 10
+        },
+        "currentState": {
+          "score": 20,
+          "maximum": 20
+        },
+        "decisions": {
+          "score": 15,
+          "maximum": 15
+        },
+        "evidence": {
+          "score": 15,
+          "maximum": 15
+        },
+        "constraints": {
+          "score": 10,
+          "maximum": 10
+        },
+        "nextAction": {
+          "score": 15,
+          "maximum": 15
+        },
+        "owner": {
+          "score": 5,
+          "maximum": 5
+        },
+        "openQuestions": {
+          "score": 10,
+          "maximum": 10
+        }
+      }
+    }
+  ]
+}

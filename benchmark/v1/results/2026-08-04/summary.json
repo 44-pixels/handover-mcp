@@ -1,0 +1,69 @@
+{
+  "benchmark": "AI Handoff Continuity Benchmark",
+  "benchmarkVersion": "1.0.0-pilot",
+  "publishedAt": "2026-08-04",
+  "status": "two-model-pilot",
+  "systems": [
+    {
+      "provider": "OpenAI",
+      "model": "gpt-5.6-terra",
+      "host": "codex-cli 0.146.0",
+      "overallScore": 88.89
+    },
+    {
+      "provider": "Anthropic",
+      "model": "claude-sonnet-5",
+      "host": "claude-code 2.1.220",
+      "overallScore": 45.19
+    }
+  ],
+  "conditionScores": [
+    {
+      "condition": "structured-handoff",
+      "meanScore": 79.45,
+      "openaiScore": 100,
+      "anthropicScore": 58.89
+    },
+    {
+      "condition": "conversation-transcript",
+      "meanScore": 76.67,
+      "openaiScore": 100,
+      "anthropicScore": 53.33
+    },
+    {
+      "condition": "compressed-memory",
+      "meanScore": 45,
+      "openaiScore": 66.67,
+      "anthropicScore": 23.33
+    }
+  ],
+  "finding": "The structured handoff condition had the highest mean pilot score at 79.45, compared with 76.67 for the transcript and 45.00 for compressed memory.",
+  "interpretation": "This pilot supports testing structured continuation records further. It does not establish model rankings or prove that formatting alone caused the score difference.",
+  "execution": {
+    "cases": 3,
+    "conditions": 3,
+    "promptsPerSystem": 9,
+    "freshSessionPerPrompt": true,
+    "toolsEnabled": false,
+    "temperature": null,
+    "retryPolicy": "No retries. Responses that failed strict JSON parsing were recorded and scored as missing.",
+    "scoring": "Exact match for single-value fields and set F1 for multi-value fields. No LLM judge."
+  },
+  "caveats": [
+    "The three cases are authored English-language simulations.",
+    "The conditions intentionally retain different amounts of information.",
+    "Output-schema adherence affected scores; four Anthropic responses used fenced JSON and one OpenAI response returned candidate text instead of candidate IDs.",
+    "A single run per system is not enough to estimate variance.",
+    "Handover created the benchmark and benefits if structured handoffs perform well."
+  ],
+  "files": {
+    "methodology": "https://handover.sh/benchmark/v1/README.md",
+    "dataset": "https://handover.sh/benchmark/v1/dataset.json",
+    "runner": "https://handover.sh/benchmark/v1/run.mjs",
+    "openaiSubmission": "https://handover.sh/benchmark/v1/results/2026-08-04/openai-submission.json",
+    "openaiResult": "https://handover.sh/benchmark/v1/results/2026-08-04/openai-result.json",
+    "anthropicSubmission": "https://handover.sh/benchmark/v1/results/2026-08-04/anthropic-submission.json",
+    "anthropicResult": "https://handover.sh/benchmark/v1/results/2026-08-04/anthropic-result.json",
+    "rawResponses": "https://handover.sh/benchmark/v1/results/2026-08-04/README.md"
+  }
+}

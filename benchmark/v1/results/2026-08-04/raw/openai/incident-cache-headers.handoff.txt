@@ -1,0 +1,1 @@
+{"objective":"obj_restore_safe","currentState":["state_rollback_done","state_patch_staging"],"decisions":["dec_route_scope"],"evidence":["ev_trace_1842","ev_staging_27"],"constraints":["con_change_window","con_no_schema"],"nextAction":"next_validate_headers","owner":"owner_mina","openQuestions":["q_vary_header"]}

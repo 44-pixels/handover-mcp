@@ -128,6 +128,27 @@ catalog at [skills.handover.sh](https://skills.handover.sh/) or inspect the
 source in [`skills/`](skills/). The collection is also indexed in the
 [Skills.sh directory](https://www.skills.sh/44-pixels/handover-mcp).
 
+## Open continuity benchmark
+
+The [AI Handoff Continuity
+Benchmark](https://handover.sh/benchmark?utm_source=github&utm_medium=referral&utm_campaign=continuity_benchmark_results)
+tests whether a successor model can recover the objective, current state,
+decisions, evidence, constraints, next action, owner, and open questions from
+a transcript, compressed memory, or structured handoff.
+
+The first two-system pilot scored structured handoffs at 79.45, conversation
+transcripts at 76.67, and compressed memory at 45.00. It is a small authored
+pilot rather than a model leaderboard. The public [`benchmark/`](benchmark/)
+directory contains the dataset, answer key, dependency-free scorer, strict
+submissions, deterministic results, limitations, and all 18 raw response
+bodies.
+
+```bash
+cd benchmark/v1
+node run.mjs --validate-scorer
+node run.mjs --prompts ./prompts
+```
+
 ## What agents can do
 
 Connected agents can:
