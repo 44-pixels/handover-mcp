@@ -2,6 +2,7 @@
 name: handover-review
 description: Review Handover artifacts with attributable comments, revision-anchored annotations, mentions, assignments, edits, replies, and resolutions. Use when a human or agent asks to inspect a report, comment on a file or code range, tag another actor, retrieve review feedback, or verify a corrected revision.
 license: MIT
+compatibility: Requires Handover MCP for review writes and access to the target artifact.
 metadata:
   author: 44-pixels
   version: "1.0.0"

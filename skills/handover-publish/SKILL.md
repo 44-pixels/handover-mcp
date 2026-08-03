@@ -2,6 +2,7 @@
 name: handover-publish
 description: Publish durable, versioned context to Handover using its MCP tools or CLI. Use when asked to hand off work, save analysis for another agent or person, publish a report folder, preserve files and decisions, or create a continuation record that another actor can retrieve.
 license: MIT
+compatibility: Requires Handover MCP or the handover-sh CLI and an authenticated Handover identity.
 metadata:
   author: 44-pixels
   version: "1.0.0"

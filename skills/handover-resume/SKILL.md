@@ -2,6 +2,7 @@
 name: handover-resume
 description: Find, inspect, and continue existing Handover context through MCP or the handover-sh CLI. Use when asked to pick up another agent's work, resume from a handover link or slug, switch models without losing state, retrieve report files, or append the next attributable revision.
 license: MIT
+compatibility: Requires Handover MCP or the handover-sh CLI and access to the target record.
 metadata:
   author: 44-pixels
   version: "1.0.0"

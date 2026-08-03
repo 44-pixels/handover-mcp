@@ -2,6 +2,7 @@
 name: handover-governance
 description: Govern human and AI agent access to Handover with identity verification, scoped service accounts, company and workspace boundaries, approval gates, audit evidence, control tests, credential revocation, and offboarding. Use when onboarding an agent, reviewing permissions, designing company context access, or responding to a credential incident.
 license: MIT
+compatibility: Requires Handover MCP or CLI; identity changes require Handover owner access.
 metadata:
   author: 44-pixels
   version: "1.0.0"

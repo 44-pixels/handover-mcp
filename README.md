@@ -128,6 +128,12 @@ catalog at [skills.handover.sh](https://skills.handover.sh/) or inspect the
 source in [`skills/`](skills/). The collection is also indexed in the
 [Skills.sh directory](https://www.skills.sh/44-pixels/handover-mcp).
 
+To publish a workflow that uses Handover, start with the
+[contributor contract](CONTRIBUTING.md) and the
+[starter skill](templates/handover-skill/SKILL.md). Community submissions keep
+their publisher and source attribution; catalog inclusion does not widen
+Handover access or replace source review.
+
 ## Open continuity benchmark
 
 The [AI Handoff Continuity
