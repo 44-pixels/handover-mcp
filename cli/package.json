@@ -1,6 +1,6 @@
 {
   "name": "handover-sh",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "CLI for versioned handoffs and shared context across humans and AI coding agents.",
   "license": "MIT",
   "author": "44pixels",
@@ -54,6 +54,6 @@
     "provenance": true
   },
   "scripts": {
-    "test": "node ./handover.mjs --version && node ./handover.mjs --help"
+    "test": "node --test ./test/*.test.mjs && node ./handover.mjs --version && node ./handover.mjs --help"
   }
 }

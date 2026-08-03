@@ -22,10 +22,11 @@ import {
 import { homedir } from "node:os";
 import process from "node:process";
 
-const VERSION = "0.1.2";
+const VERSION = "0.1.3";
 const COMMANDS = new Set([
   "login",
   "logout",
+  "doctor",
   "whoami",
   "list",
   "search",
@@ -119,6 +120,30 @@ async function main() {
   const json = Boolean(parsed.options.json);
 
   switch (parsed.command) {
+    case "doctor": {
+      const startedAt = Date.now();
+      const actor = await client.json("/me");
+      const page = await client.json("/handovers?limit=1&status=active");
+      const result = {
+        ok: true,
+        endpoint: client.root,
+        identity: {
+          displayName: actor.displayName,
+          type: actor.type,
+          organizationName: actor.organizationName,
+          workspaceName: actor.workspaceName,
+          role: actor.role,
+          scopes: actor.scopes,
+        },
+        contextRead: {
+          ok: true,
+          visibleItems: Array.isArray(page.items) ? page.items.length : 0,
+        },
+        latencyMs: Date.now() - startedAt,
+      };
+      output(result, json, formatDoctor);
+      break;
+    }
     case "whoami": {
       const actor = await client.json("/me");
       output(actor, json, formatIdentity);
@@ -623,6 +648,7 @@ function createClient({ baseUrl, token }) {
     return response;
   }
   return {
+    root,
     raw,
     async json(path, init) {
       const response = await raw(path, init);
@@ -709,6 +735,7 @@ function assertAllowedOptions(command, options) {
   const commandOptions = {
     login: [],
     logout: [],
+    doctor: [],
     whoami: [],
     list: ["limit", "status"],
     search: ["limit", "status", "mode"],
@@ -1315,6 +1342,20 @@ function formatIdentity(actor) {
   ].join("\n");
 }
 
+function formatDoctor(result) {
+  const identity = result.identity;
+  return [
+    "Handover connection is ready.",
+    `Endpoint: ${result.endpoint}`,
+    `Identity: ${identity.displayName} (${identity.type})`,
+    `Workspace: ${identity.organizationName} / ${identity.workspaceName}`,
+    `Role: ${identity.role}`,
+    `Scopes: ${identity.scopes.join(", ")}`,
+    `Context read: ok (${result.contextRead.visibleItems} item${result.contextRead.visibleItems === 1 ? "" : "s"} sampled)`,
+    `Round trip: ${result.latencyMs} ms`,
+  ].join("\n");
+}
+
 function formatHandoverList(page) {
   if (!page.items.length) return "No handovers found.";
   return page.items
@@ -1496,7 +1537,8 @@ Usage:
 Commands:
   login                   Save and verify a Handover connection
   logout                  Remove the saved connection
-  whoami                 Show the authenticated identity
+  doctor                  Verify identity, access, and a context read
+  whoami                  Show the authenticated identity
   list                    List recent handovers
   search <query>          Search all indexed context
   show <handover-id>      Show current context and resume brief
@@ -1549,6 +1591,11 @@ the identity, and stores the connection in a user-only configuration file.`,
     logout: `Usage: handover logout
 
 Removes the saved Handover connection from this computer.`,
+    doctor: `Usage: handover doctor [--json]
+
+Runs a read-only connection check against the configured Handover endpoint.
+Verifies the authenticated identity, workspace, scopes, and one context-list
+request without printing the credential or changing any handover.`,
     whoami: `Usage: handover whoami [--json]`,
     list: `Usage: handover list [--status active|archived|trashed] [--limit 30] [--json]`,
     search: `Usage: handover search <query> [--mode hybrid|semantic|lexical] [--status active|archived|trashed] [--limit 30] [--json]`,

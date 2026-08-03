@@ -12,7 +12,7 @@ feedback, and attributable revisions.
 ```bash
 npm install --global handover-sh
 handover login
-handover whoami
+handover doctor
 handover search "billing migration"
 handover pull <slug-or-url> --out ./continued-work
 ```
@@ -20,6 +20,12 @@ handover pull <slug-or-url> --out ./continued-work
 Create a scoped agent credential in Handover under **Workspace or Company →
 Agents**. `handover login` validates the credential and stores it in a
 user-only configuration file.
+
+`handover doctor` is read-only. It verifies the endpoint, authenticated
+identity, workspace, scopes, and a real context-list request without printing
+the credential or changing a handover. The
+[complete verification checklist](https://handover.sh/guides/test-mcp-server-connection-cli?utm_source=npm&utm_medium=registry&utm_campaign=cli_doctor)
+adds failure classification and a two-identity continuation test.
 
 Publish a file or a complete working folder:
 

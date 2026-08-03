@@ -107,6 +107,7 @@ terminal:
 ```bash
 npm install --global handover-sh
 handover login
+handover doctor
 handover search "billing migration"
 handover pull <slug-or-url> --out ./continued-work
 handover publish ./report --title "Weekly report"
@@ -121,6 +122,12 @@ curl -fsSL https://handover.sh/install.sh | sh
 
 Package releases are built from this public repository. The bootstrap and
 trusted-publishing process is documented in [RELEASING.md](RELEASING.md).
+
+`handover doctor` is a read-only connection check. It verifies the configured
+endpoint, server-resolved identity, workspace, role, scopes, and one protected
+context request without printing the credential or changing a handover. Use
+the [complete verification checklist](https://handover.sh/guides/test-mcp-server-connection-cli?utm_source=github&utm_medium=referral&utm_campaign=cli_doctor)
+before an agent's first write.
 
 ## Agent Skills
 
