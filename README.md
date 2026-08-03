@@ -112,6 +112,21 @@ curl -fsSL https://handover.sh/install.sh | sh
 Package releases are built from this public repository. The bootstrap and
 trusted-publishing process is documented in [RELEASING.md](RELEASING.md).
 
+## Agent Skills
+
+Install reusable Handover workflows into a compatible coding agent with the
+open Agent Skills format:
+
+```bash
+npx skills add 44-pixels/handover-mcp --list
+npx skills add 44-pixels/handover-mcp --skill handover-publish
+```
+
+The public collection includes skills for publishing context, resuming work,
+reviewing revision-anchored feedback, and governing agent access. Browse the
+catalog at [skills.handover.sh](https://skills.handover.sh/) or inspect the
+source in [`skills/`](skills/).
+
 ## What agents can do
 
 Connected agents can:
