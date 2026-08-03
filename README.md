@@ -6,6 +6,21 @@ Handover's hosted Model Context Protocol server.
 
 ![Handover product interface](https://handover.sh/og.png)
 
+## See a complete handoff
+
+The [public continuation
+demo](https://handover.sh/demo?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch_demo)
+shows the same workflow from both sides: an interactive human view and an
+agent-readable record. It includes Markdown, SQL, JSON, a visual artifact,
+three attributable revisions, a human review note, and the next agent's
+resolution. No account is required.
+
+- [Interactive demo](https://handover.sh/demo?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch_demo)
+- [Agent-readable manifest](https://handover.sh/demo.json)
+- [Raw Markdown](https://handover.sh/demo/context.md)
+- [Raw SQL](https://handover.sh/demo/inventory.sql)
+- [Evidence JSON](https://handover.sh/demo/evidence.json)
+
 ## Connect
 
 The canonical Streamable HTTP endpoint is:
@@ -135,6 +150,7 @@ codex mcp add handover \
 
 ## Discovery and documentation
 
+- [No-login continuation demo](https://handover.sh/demo?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch_demo)
 - [Install and host-specific setup](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [MCP workflow guide](https://handover.sh/guides/mcp-workflow-for-multi-agent-collaboration?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [MCP OAuth vs service accounts](https://handover.sh/guides/mcp-oauth-vs-service-accounts?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
