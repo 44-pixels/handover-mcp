@@ -23,13 +23,13 @@ jobs:
           RELEASE: v1.8.0
         run: |
           curl --fail --location --silent --show-error \
-            --output mcp-publisher.tar.gz \
+            --output mcp-publisher_linux_amd64.tar.gz \
             "https://github.com/modelcontextprotocol/registry/releases/download/${RELEASE}/mcp-publisher_linux_amd64.tar.gz"
           curl --fail --location --silent --show-error \
             --output checksums.txt \
             "https://github.com/modelcontextprotocol/registry/releases/download/${RELEASE}/registry_1.8.0_checksums.txt"
           grep 'mcp-publisher_linux_amd64.tar.gz$' checksums.txt | sha256sum --check
-          tar -xzf mcp-publisher.tar.gz
+          tar -xzf mcp-publisher_linux_amd64.tar.gz
 
       - name: Validate registry manifest
         run: ./mcp-publisher validate server.json
