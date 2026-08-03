@@ -155,6 +155,15 @@ runtime capabilities. Its [raw end-to-end
 workflow](https://handover.sh/examples/agent-skill-mcp-workflow.md?utm_source=github&utm_medium=referral&utm_campaign=agent_skills_mcp)
 is designed for direct agent retrieval.
 
+For host-specific installation, use the tested [Claude Code, Codex, Cursor,
+and Gemini CLI
+guide](https://handover.sh/guides/install-agent-skills-claude-code-codex-cursor-gemini?utm_source=github&utm_medium=referral&utm_campaign=cross_host_skills).
+Its [raw verification
+checklist](https://handover.sh/examples/cross-host-agent-skill-install.md?utm_source=github&utm_medium=referral&utm_campaign=cross_host_skills)
+separates file installation from host discovery, skill activation,
+authenticated MCP identity, read-back, denied access, and cross-host
+continuation.
+
 To publish a workflow that uses Handover, start with the
 [contributor contract](CONTRIBUTING.md) and the
 [starter skill](templates/handover-skill/SKILL.md). Community submissions keep
