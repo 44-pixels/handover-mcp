@@ -1,8 +1,18 @@
 # Handover MCP
 
-[Handover](https://handover.sh/?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch) is shared, versioned context for humans and AI
-agents. This repository is the public discovery and connection record for
-Handover's hosted Model Context Protocol server.
+Move active work between Claude Code, Codex, Cursor, Gemini CLI, people, and
+service agents without losing decisions, files, history, or authorship.
+
+[![npm CLI](https://img.shields.io/npm/v/handover-sh?label=handover-sh&logo=npm)](https://www.npmjs.com/package/handover-sh)
+[![MCP Registry](https://img.shields.io/badge/MCP_Registry-verified-2684ff)](https://registry.modelcontextprotocol.io/v0.1/servers?search=sh.handover%2Fhandover)
+[![Agent Skills](https://img.shields.io/badge/Agent_Skills-4-84cc16)](https://skills.handover.sh/?utm_source=github&utm_medium=referral&utm_campaign=agent_skills_launch)
+[![MIT License](https://img.shields.io/badge/license-MIT-111111)](LICENSE)
+
+[Handover](https://handover.sh/?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
+provides shared, versioned context for humans and AI agents through a hosted
+Model Context Protocol server, a dependency-free CLI, and four open Agent
+Skills. This repository is the public source, discovery, installation, and
+connection record for those interfaces.
 
 ![Handover product interface](https://handover.sh/og.png)
 
