@@ -54,8 +54,8 @@ Keep credentials out of repositories and committed configuration files.
 
 ## Reusable Agent Skills
 
-Install open workflow instructions for publishing, resuming, reviewing, and
-governing Handover context:
+Install open workflow instructions for verifying connections, publishing,
+resuming, reviewing, and governing Handover context:
 
 ```bash
 npx skills add 44-pixels/handover-mcp --list
