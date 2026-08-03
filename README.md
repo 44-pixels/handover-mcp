@@ -117,6 +117,8 @@ trusted-publishing process is documented in [RELEASING.md](RELEASING.md).
 Install reusable Handover workflows into a compatible coding agent with the
 open Agent Skills format:
 
+[![skills.sh](https://skills.sh/b/44-pixels/handover-mcp)](https://skills.sh/44-pixels/handover-mcp)
+
 ```bash
 npx skills add 44-pixels/handover-mcp --list
 npx skills add 44-pixels/handover-mcp --skill handover-publish
@@ -127,6 +129,13 @@ reviewing revision-anchored feedback, and governing agent access. Browse the
 catalog at [skills.handover.sh](https://skills.handover.sh/) or inspect the
 source in [`skills/`](skills/). The collection is also indexed in the
 [Skills.sh directory](https://www.skills.sh/44-pixels/handover-mcp).
+
+The [Agent Skills and MCP
+guide](https://handover.sh/guides/agent-skills-and-mcp?utm_source=github&utm_medium=referral&utm_campaign=agent_skills_mcp)
+explains the boundary between portable workflow instructions and authenticated
+runtime capabilities. Its [raw end-to-end
+workflow](https://handover.sh/examples/agent-skill-mcp-workflow.md?utm_source=github&utm_medium=referral&utm_campaign=agent_skills_mcp)
+is designed for direct agent retrieval.
 
 To publish a workflow that uses Handover, start with the
 [contributor contract](CONTRIBUTING.md) and the
