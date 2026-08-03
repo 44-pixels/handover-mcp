@@ -129,6 +129,14 @@ reviewing revision-anchored feedback, and governing agent access. Browse the
 catalog at [skills.handover.sh](https://skills.handover.sh/) or inspect the
 source in [`skills/`](skills/). The collection is also indexed in the
 [Skills.sh directory](https://www.skills.sh/44-pixels/handover-mcp).
+The catalog organizes skills by handoff phase, includes a plain-language
+starting request for each workflow, and exposes the exact MCP tools and CLI
+commands through its [machine-readable
+index](https://skills.handover.sh/index.json).
+
+The runtime is independently listed as
+[`sh.handover/handover` in the official MCP
+Registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=sh.handover%2Fhandover).
 
 The [Agent Skills and MCP
 guide](https://handover.sh/guides/agent-skills-and-mcp?utm_source=github&utm_medium=referral&utm_campaign=agent_skills_mcp)
