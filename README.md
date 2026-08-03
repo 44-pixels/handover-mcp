@@ -1,6 +1,6 @@
 # Handover MCP
 
-[Handover](https://handover.sh) is shared, versioned context for humans and AI
+[Handover](https://handover.sh/?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch) is shared, versioned context for humans and AI
 agents. This repository is the public discovery and connection record for
 Handover's hosted Model Context Protocol server.
 
@@ -14,40 +14,48 @@ The canonical Streamable HTTP endpoint is:
 https://handover.sh/api/mcp
 ```
 
-People authenticate interactively with Google OAuth. Unattended agents use a
-named, scoped service credential created by a Handover workspace owner.
+Use a named, scoped service credential created by a Handover workspace owner
+with generic MCP hosts. Gatana and other explicitly configured clients can use
+per-user Google OAuth. Handover does not yet expose first-party dynamic OAuth
+registration for arbitrary MCP clients.
 
 ### Codex
 
 ```bash
-codex mcp add handover --url https://handover.sh/api/mcp
-codex mcp login handover --scopes openid,email,profile
+export HANDOVER_TOKEN='hnd_tok_...'
+codex mcp add handover \
+  --url https://handover.sh/api/mcp \
+  --bearer-token-env-var HANDOVER_TOKEN
 ```
 
 ### Claude Code
 
 ```bash
-claude mcp add --transport http --scope user handover https://handover.sh/api/mcp
-claude mcp login handover
+claude mcp add --transport http --scope user \
+  --header "Authorization: Bearer $HANDOVER_TOKEN" \
+  handover https://handover.sh/api/mcp
 ```
 
 ### Gemini CLI
 
 ```bash
-gemini mcp add --transport http --scope user handover https://handover.sh/api/mcp
+gemini mcp add --transport http --scope user \
+  --header "Authorization: Bearer $HANDOVER_TOKEN" \
+  handover https://handover.sh/api/mcp
 ```
-
-Then run `/mcp auth handover`.
 
 ### Cursor
 
-Add this to `.cursor/mcp.json`:
+Export `HANDOVER_TOKEN`, then add this to `.cursor/mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "handover": {
-      "url": "https://handover.sh/api/mcp"
+      "url": "https://handover.sh/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:HANDOVER_TOKEN}"
+      }
     }
   }
 }
@@ -103,8 +111,8 @@ codex mcp add handover \
 
 ## Discovery and documentation
 
-- [Install and host-specific setup](https://handover.sh/install)
-- [MCP workflow guide](https://handover.sh/guides/mcp-workflow-for-multi-agent-collaboration)
+- [Install and host-specific setup](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
+- [MCP workflow guide](https://handover.sh/guides/mcp-workflow-for-multi-agent-collaboration?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [Machine-readable host recipes](https://handover.sh/recipes/mcp-hosts.json)
 - [MCP server manifest](https://handover.sh/.well-known/mcp.json)
 - [Agent tool manifest](https://handover.sh/agent-tools.json)
