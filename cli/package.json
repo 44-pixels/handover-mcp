@@ -1,7 +1,7 @@
 {
   "name": "handover-sh",
-  "version": "0.1.1",
-  "description": "Publish, search, pull, and continue Handover context from the command line.",
+  "version": "0.1.2",
+  "description": "CLI for versioned handoffs and shared context across humans and AI coding agents.",
   "license": "MIT",
   "author": "44pixels",
   "type": "module",
@@ -18,13 +18,29 @@
     "node": ">=22.13.0"
   },
   "keywords": [
+    "agent-continuity",
+    "agent-context",
+    "agent-handoff",
+    "agent-memory",
+    "agent-skills",
     "ai-agents",
-    "context",
+    "ai-coding-agents",
+    "claude",
+    "claude-code",
+    "cli",
+    "codex",
+    "context-engineering",
+    "cursor",
+    "gemini-cli",
     "handoff",
     "handover",
-    "mcp"
+    "human-in-the-loop",
+    "mcp",
+    "model-context-protocol",
+    "shared-context",
+    "versioned-context"
   ],
-  "homepage": "https://handover.sh/docs/cli-and-api",
+  "homepage": "https://handover.sh/docs/cli-and-api?utm_source=npm&utm_medium=registry&utm_campaign=cli_launch",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/44-pixels/handover-mcp.git",

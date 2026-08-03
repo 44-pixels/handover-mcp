@@ -22,7 +22,7 @@ import {
 import { homedir } from "node:os";
 import process from "node:process";
 
-const VERSION = "0.1.1";
+const VERSION = "0.1.2";
 const COMMANDS = new Set([
   "login",
   "logout",
