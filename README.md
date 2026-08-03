@@ -81,6 +81,9 @@ npm release is available, use the audited direct installer:
 curl -fsSL https://handover.sh/install.sh | sh
 ```
 
+Package releases are built from this public repository. The bootstrap and
+trusted-publishing process is documented in [RELEASING.md](RELEASING.md).
+
 ## What agents can do
 
 Connected agents can:
@@ -113,12 +116,13 @@ codex mcp add handover \
 
 - [Install and host-specific setup](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [MCP workflow guide](https://handover.sh/guides/mcp-workflow-for-multi-agent-collaboration?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
+- [MCP OAuth vs service accounts](https://handover.sh/guides/mcp-oauth-vs-service-accounts?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [Machine-readable host recipes](https://handover.sh/recipes/mcp-hosts.json)
 - [MCP server manifest](https://handover.sh/.well-known/mcp.json)
 - [Agent tool manifest](https://handover.sh/agent-tools.json)
 - [OpenAPI document](https://handover.sh/openapi.json)
 - [Agent-readable knowledge corpus](https://handover.sh/llms-full.txt)
-- [Security model](https://handover.sh/security)
+- [Security model](https://handover.sh/security?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 
 ## Source and support
 

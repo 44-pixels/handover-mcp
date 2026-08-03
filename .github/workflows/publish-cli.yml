@@ -20,15 +20,19 @@ jobs:
         with:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
+          package-manager-cache: false
+
+      - name: Use a trusted-publishing compatible npm CLI
+        run: npm install --global "npm@^11.5.1"
 
       - name: Verify package
         run: |
           npm test --prefix cli
           npm pack --dry-run ./cli
+          test "$(node -p "require('./cli/package.json').repository.url")" = \
+            "git+https://github.com/44-pixels/handover-mcp.git"
 
       - name: Publish package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          test -n "$NODE_AUTH_TOKEN"
-          npm publish ./cli --access public --provenance
+        run: npm publish ./cli --access public --provenance
