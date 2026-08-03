@@ -29,6 +29,11 @@ The canonical Streamable HTTP endpoint is:
 https://handover.sh/api/mcp
 ```
 
+The endpoint exposes its MCP handshake and tool schemas without an account so
+clients and directories can verify compatibility before connecting. Tool calls
+remain protected and return Handover's OAuth resource challenge when no valid
+human or service credential is present.
+
 Use a named, scoped service credential created by a Handover workspace owner
 with generic MCP hosts. Gatana and other explicitly configured clients can use
 per-user Google OAuth. Handover does not yet expose first-party dynamic OAuth
@@ -154,6 +159,9 @@ codex mcp add handover \
 - [Install and host-specific setup](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [MCP workflow guide](https://handover.sh/guides/mcp-workflow-for-multi-agent-collaboration?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [MCP OAuth vs service accounts](https://handover.sh/guides/mcp-oauth-vs-service-accounts?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
+- [Preserve context across AI coding agents](https://handover.sh/guides/preserve-context-across-ai-coding-agents?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
+- [Migrate static report folders](https://handover.sh/guides/migrate-static-report-folders-to-shared-ai-context?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
+- [Glama hosted connector](https://glama.ai/mcp/connectors/sh.handover/handover)
 - [Machine-readable host recipes](https://handover.sh/recipes/mcp-hosts.json)
 - [MCP server manifest](https://handover.sh/.well-known/mcp.json)
 - [Agent tool manifest](https://handover.sh/agent-tools.json)
