@@ -6,13 +6,12 @@ provenance inspectable in one place.
 
 ## One-time bootstrap
 
-The first npm release creates the package. npm requires either:
+Release `0.1.0` created the package on 2026-08-03. npm required either:
 
 - an interactive publish with account 2FA; or
 - a granular access token that can create public packages and bypasses 2FA.
 
-Add that bootstrap credential as the `NPM_TOKEN` repository secret, run the
-**Publish Handover CLI** workflow manually, then verify:
+The bootstrap release was published interactively and verified with:
 
 ```bash
 npm view handover-sh version
@@ -21,8 +20,8 @@ handover --version
 handover --help
 ```
 
-Do not put the token in a file, issue, workflow input, shell history, or
-handover artifact.
+Do not add a bootstrap token to the repository. Revoke any temporary publishing
+tokens after use.
 
 ## Configure trusted publishing
 
@@ -34,10 +33,10 @@ After the package exists, configure its npm trusted publisher:
 - Workflow filename: `publish-cli.yml`
 - Allowed action: `npm publish`
 
-The workflow uses a GitHub-hosted runner, grants `id-token: write`, and installs
-an npm CLI version that supports trusted publishing. Once one trusted publish
-succeeds, delete the `NPM_TOKEN` repository secret and set package publishing
-access to require 2FA while disallowing traditional tokens.
+The workflow uses a GitHub-hosted runner, grants `id-token: write`, installs an
+npm CLI version that supports trusted publishing, and does not provide a
+traditional npm token. Once one trusted publish succeeds, set package
+publishing access to require 2FA while disallowing traditional tokens.
 
 ## Release a version
 

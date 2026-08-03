@@ -33,6 +33,4 @@ jobs:
             "git+https://github.com/44-pixels/handover-mcp.git"
 
       - name: Publish package
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish ./cli --access public --provenance

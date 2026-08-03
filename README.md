@@ -79,8 +79,8 @@ handover pull <slug-or-url> --out ./continued-work
 handover publish ./report --title "Weekly report"
 ```
 
-The publishable source and package metadata live in [`cli/`](cli/). Until the
-npm release is available, use the audited direct installer:
+The published package source and metadata live in [`cli/`](cli/). The audited
+direct installer remains available when npm is not appropriate:
 
 ```bash
 curl -fsSL https://handover.sh/install.sh | sh
