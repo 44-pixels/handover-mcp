@@ -24,7 +24,7 @@ needs shared evidence, review, attribution, and revision history.
 Endpoint:
 
 ```text
-https://handover.sh/api/mcp
+https://handover.sh/api/mcp?profile=core
 ```
 
 Handover supports per-user Google OAuth in explicitly configured clients such
@@ -37,12 +37,12 @@ separate, named service credentials created under **Company > Agents**.
 export HANDOVER_CLAUDE_TOKEN='hnd_tok_...'
 claude mcp add --transport http --scope user \
   --header "Authorization: Bearer $HANDOVER_CLAUDE_TOKEN" \
-  handover https://handover.sh/api/mcp
+  handover https://handover.sh/api/mcp?profile=core
 
 # Codex
 export HANDOVER_CODEX_TOKEN='hnd_tok_...'
 codex mcp add handover \
-  --url https://handover.sh/api/mcp \
+  --url https://handover.sh/api/mcp?profile=core \
   --bearer-token-env-var HANDOVER_CODEX_TOKEN
 ```
 

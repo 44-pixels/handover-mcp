@@ -13,7 +13,7 @@ The test distinguishes three properties:
 
 ## Prerequisites
 
-- Connect each host to `https://handover.sh/api/mcp`.
+- Connect each host to `https://handover.sh/api/mcp?profile=core`.
 - Use a separate human sign-in or named service credential for every actor.
 - Give Principal A and Principal B access to the same workspace.
 - Keep Principal D outside that workspace for the denied-access check.

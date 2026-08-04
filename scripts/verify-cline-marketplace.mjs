@@ -1,14 +1,25 @@
 #!/usr/bin/env node
 
-const endpoint = "https://handover.sh/api/mcp";
+const endpoint = "https://handover.sh/api/mcp?profile=core";
 const protocolVersion = "2025-06-18";
-const requiredTools = [
+const expectedTools = [
   "handover.whoami",
   "handover.search",
   "handover.get",
   "handover.read_artifact",
+  "handover.thread",
+  "handover.annotations",
   "handover.create",
   "handover.continue",
+  "handover.comment",
+  "handover.annotate",
+  "handover.update_comment",
+  "handover.assign",
+  "handover.publish",
+  "handover.publication",
+  "handover.pull",
+  "handover.okf.export",
+  "handover.okf.import",
 ];
 
 const initialize = await rpc("initialize", {
@@ -31,12 +42,11 @@ assert(
 
 const tools = await rpc("tools/list", {});
 assert(tools.response.status === 200, "tools/list must return HTTP 200.");
-const toolNames = new Set(
-  (tools.body?.result?.tools ?? []).map((tool) => tool.name),
+const toolNames = (tools.body?.result?.tools ?? []).map((tool) => tool.name);
+assert(
+  JSON.stringify(toolNames) === JSON.stringify(expectedTools),
+  `tools/list must expose exactly ${expectedTools.length} core tools.`,
 );
-for (const name of requiredTools) {
-  assert(toolNames.has(name), `tools/list is missing ${name}.`);
-}
 
 const protectedCall = await rpc("tools/call", {
   name: "handover.whoami",
@@ -63,8 +73,8 @@ console.log(
       endpoint,
       protocolVersion,
       server: initialize.body.result.serverInfo,
-      tools: toolNames.size,
-      requiredTools,
+      tools: toolNames.length,
+      expectedTools,
       unauthenticatedProtectedCall: {
         status: protectedCall.response.status,
         code: protectedCall.body.error.code,

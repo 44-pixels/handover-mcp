@@ -10,7 +10,7 @@ First-party setup page:
 ## Before you change anything
 
 1. Confirm the user wants to connect the hosted Handover service at
-   `https://handover.sh/api/mcp`.
+   `https://handover.sh/api/mcp?profile=core`.
 2. Ask the user to create a separately named service agent under **Workspace or
    Company -> Agents** in Handover. Do not create, request, display, or paste its
    credential in chat.
@@ -26,14 +26,14 @@ its **Static headers** option.
 Open Cline's MCP installation wizard:
 
 ```bash
-cline mcp install handover --transport http https://handover.sh/api/mcp
+cline mcp install handover --transport http https://handover.sh/api/mcp?profile=core
 ```
 
 Keep these values:
 
 - Server name: `handover`
 - Server type: `Remote (HTTP)`
-- Server URL: `https://handover.sh/api/mcp`
+- Server URL: `https://handover.sh/api/mcp?profile=core`
 - Authentication: `Static headers`
 
 At the private header prompt, the user should enter:
@@ -57,7 +57,7 @@ to a project.
     "handover": {
       "transport": {
         "type": "streamableHttp",
-        "url": "https://handover.sh/api/mcp",
+        "url": "https://handover.sh/api/mcp?profile=core",
         "headers": {
           "Authorization": "Bearer <SERVICE_AGENT_TOKEN>"
         }

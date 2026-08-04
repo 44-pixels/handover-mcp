@@ -129,8 +129,14 @@ orchestration framework can route it. Git or Handover can store it.
 The canonical Streamable HTTP endpoint is:
 
 ```text
-https://handover.sh/api/mcp
+https://handover.sh/api/mcp?profile=core
 ```
+
+The recommended core profile exposes 17 tools for everyday identity, search,
+retrieval, review, continuation, publishing, and portability workflows. Use
+`https://handover.sh/api/mcp?profile=native` for all 27 first-party Handover
+operations. The unparameterized `https://handover.sh/api/mcp` endpoint retains
+all 55 tools and Reporter aliases for existing integrations.
 
 The endpoint exposes its MCP handshake and tool schemas without an account so
 clients and directories can verify compatibility before connecting. Tool calls
@@ -155,7 +161,7 @@ troubleshooting flow, see [CONNECTING.md](CONNECTING.md).
 ```bash
 export HANDOVER_TOKEN='hnd_tok_...'
 codex mcp add handover \
-  --url https://handover.sh/api/mcp \
+  --url https://handover.sh/api/mcp?profile=core \
   --bearer-token-env-var HANDOVER_TOKEN
 ```
 
@@ -164,7 +170,7 @@ codex mcp add handover \
 ```bash
 claude mcp add --transport http --scope user \
   --header "Authorization: Bearer $HANDOVER_TOKEN" \
-  handover https://handover.sh/api/mcp
+  handover https://handover.sh/api/mcp?profile=core
 ```
 
 ### Gemini CLI
@@ -172,7 +178,7 @@ claude mcp add --transport http --scope user \
 ```bash
 gemini mcp add --transport http --scope user \
   --header "Authorization: Bearer $HANDOVER_TOKEN" \
-  handover https://handover.sh/api/mcp
+  handover https://handover.sh/api/mcp?profile=core
 ```
 
 ### Cursor
@@ -183,7 +189,7 @@ Export `HANDOVER_TOKEN`, then add this to `.cursor/mcp.json`:
 {
   "mcpServers": {
     "handover": {
-      "url": "https://handover.sh/api/mcp",
+      "url": "https://handover.sh/api/mcp?profile=core",
       "headers": {
         "Authorization": "Bearer ${env:HANDOVER_TOKEN}"
       }
@@ -197,7 +203,7 @@ Export `HANDOVER_TOKEN`, then add this to `.cursor/mcp.json`:
 Open Cline's MCP wizard:
 
 ```bash
-cline mcp install handover --transport http https://handover.sh/api/mcp
+cline mcp install handover --transport http https://handover.sh/api/mcp?profile=core
 ```
 
 Choose **Remote (HTTP)** and **Static headers**, then enter the scoped service
@@ -367,7 +373,7 @@ repository or MCP configuration committed to source control.
 ```bash
 export HANDOVER_TOKEN='hnd_tok_...'
 codex mcp add handover \
-  --url https://handover.sh/api/mcp \
+  --url https://handover.sh/api/mcp?profile=core \
   --bearer-token-env-var HANDOVER_TOKEN
 ```
 

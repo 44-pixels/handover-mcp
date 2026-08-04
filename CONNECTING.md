@@ -6,8 +6,13 @@ model, tool, or teammate can continue.
 The hosted MCP endpoint is:
 
 ```text
-https://handover.sh/api/mcp
+https://handover.sh/api/mcp?profile=core
 ```
+
+This core profile is the recommended connection for new agents. Use
+`?profile=native` when a host needs every first-party Handover operation. Keep
+the endpoint without a profile for Reporter-compatible workflows; it continues
+to expose the complete legacy surface.
 
 ## Choose an identity
 
@@ -55,7 +60,7 @@ export HANDOVER_TOKEN='hnd_tok_...'
 
 ```bash
 codex mcp add handover \
-  --url https://handover.sh/api/mcp \
+  --url https://handover.sh/api/mcp?profile=core \
   --bearer-token-env-var HANDOVER_TOKEN
 ```
 
@@ -64,7 +69,7 @@ codex mcp add handover \
 ```bash
 claude mcp add --transport http --scope user \
   --header "Authorization: Bearer $HANDOVER_TOKEN" \
-  handover https://handover.sh/api/mcp
+  handover https://handover.sh/api/mcp?profile=core
 ```
 
 ### Cursor
@@ -75,7 +80,7 @@ Add this to `.cursor/mcp.json`:
 {
   "mcpServers": {
     "handover": {
-      "url": "https://handover.sh/api/mcp",
+      "url": "https://handover.sh/api/mcp?profile=core",
       "headers": {
         "Authorization": "Bearer ${env:HANDOVER_TOKEN}"
       }

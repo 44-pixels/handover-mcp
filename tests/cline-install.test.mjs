@@ -30,7 +30,7 @@ test("publishes a complete and safe Cline installation contract", async () => {
       handover: {
         transport: {
           type: "streamableHttp",
-          url: "https://handover.sh/api/mcp",
+          url: "https://handover.sh/api/mcp?profile=core",
           headers: {
             Authorization: "Bearer <SERVICE_AGENT_TOKEN>",
           },
