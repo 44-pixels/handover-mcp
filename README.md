@@ -143,6 +143,20 @@ Export `HANDOVER_TOKEN`, then add this to `.cursor/mcp.json`:
 }
 ```
 
+### Cline
+
+Open Cline's MCP wizard:
+
+```bash
+cline mcp install handover --transport http https://handover.sh/api/mcp
+```
+
+Choose **Remote (HTTP)** and **Static headers**, then enter the scoped service
+agent credential in Cline's private header prompt. The agent-readable
+[`llms-install.md`](llms-install.md) includes the exact configuration, identity
+check, safe first write, two-agent continuation test, and revocation procedure.
+Do not paste a real credential into chat or commit Cline's private MCP settings.
+
 ## Command-line client
 
 The dependency-free Handover CLI supports the same durable workflow from a

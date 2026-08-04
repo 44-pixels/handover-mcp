@@ -3,17 +3,21 @@ name: Validate Agent Skills
 on:
   pull_request:
     paths:
+      - "llms-install.md"
+      - "scripts/verify-cline-marketplace.mjs"
       - "skills/**"
       - "templates/handover-skill/**"
-      - "tests/validate-skill.test.mjs"
+      - "tests/**"
       - ".github/workflows/validate-skills.yml"
   push:
     branches:
       - main
     paths:
+      - "llms-install.md"
+      - "scripts/verify-cline-marketplace.mjs"
       - "skills/**"
       - "templates/handover-skill/**"
-      - "tests/validate-skill.test.mjs"
+      - "tests/**"
       - ".github/workflows/validate-skills.yml"
 
 permissions:
@@ -28,10 +32,12 @@ jobs:
         with:
           node-version: "24"
           package-manager-cache: false
-      - name: Test the validator
-        run: node --test tests/validate-skill.test.mjs
+      - name: Test integration contracts
+        run: node --test tests/*.test.mjs
       - name: Validate every published skill
         run: |
           for skill in skills/*/SKILL.md; do
             node templates/handover-skill/validate.mjs "$skill"
           done
+      - name: Verify the production MCP discovery boundary
+        run: node scripts/verify-cline-marketplace.mjs
