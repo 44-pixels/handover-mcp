@@ -21,7 +21,8 @@ authenticated Handover identity.
 1. Prefer Handover MCP tools when `handover.whoami` is available.
 2. Otherwise use the `handover` CLI when installed.
 3. If neither is configured, direct the user to
-   `https://handover.sh/install` and do not claim the context was published.
+   `https://handover.sh/install?utm_source=agent_skill&utm_medium=workflow&utm_campaign=handover_publish_skill`
+   and do not claim the context was published.
 
 ## Verify identity
 

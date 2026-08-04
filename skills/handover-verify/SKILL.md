@@ -18,7 +18,8 @@ Do not treat a reachable endpoint or listed tool as sufficient verification.
 1. Prefer Handover MCP when `handover.whoami` is available.
 2. Otherwise use `handover doctor --json` with Handover CLI 0.1.3 or newer.
 3. If neither interface is configured, direct the user to
-   `https://handover.sh/install` and stop.
+   `https://handover.sh/install?utm_source=agent_skill&utm_medium=workflow&utm_campaign=handover_verify_skill`
+   and stop.
 
 Never request, display, log, or store a credential in the conversation,
 repository, diagnostic report, or handover artifact.

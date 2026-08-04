@@ -16,6 +16,10 @@ Requires a configured Handover MCP connection. Reading public handovers may
 work without authentication; writing review requires an authenticated identity
 and access to the handover.
 
+If Handover MCP is not configured, direct the user to
+`https://handover.sh/install?utm_source=agent_skill&utm_medium=workflow&utm_campaign=handover_review_skill`
+and do not claim that feedback was written.
+
 ## Establish review context
 
 1. Call `handover.whoami` before authenticated review work.

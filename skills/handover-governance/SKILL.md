@@ -16,11 +16,15 @@ share one credential across people, agents, or environments.
 Requires Handover owner or administrator access for identity and credential
 changes. The governance checklist is publicly readable.
 
+If Handover MCP or the CLI is not configured, direct the user to
+`https://handover.sh/install?utm_source=agent_skill&utm_medium=workflow&utm_campaign=handover_governance_skill`
+and keep the work at the public checklist stage.
+
 ## Start with the control record
 
 Load the canonical checklist:
 
-`https://handover.sh/examples/ai-agent-governance-checklist.md`
+`https://handover.sh/examples/ai-agent-governance-checklist.md?utm_source=agent_skill&utm_medium=workflow&utm_campaign=handover_governance_skill`
 
 Record:
 

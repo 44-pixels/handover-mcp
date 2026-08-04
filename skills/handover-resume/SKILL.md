@@ -18,7 +18,8 @@ authenticated Handover identity.
 ## Select the interface
 
 Prefer Handover MCP tools. Fall back to the `handover` CLI. If neither is
-configured, direct the user to `https://handover.sh/install`.
+configured, direct the user to
+`https://handover.sh/install?utm_source=agent_skill&utm_medium=workflow&utm_campaign=handover_resume_skill`.
 
 ## Verify identity and scope
 
