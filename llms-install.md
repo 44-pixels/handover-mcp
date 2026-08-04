@@ -17,9 +17,10 @@ First-party setup page:
 3. Use the minimum scopes needed for the intended workflow. Read-only agents do
    not need write, review, or administration scopes.
 
-Handover does not yet offer dynamic OAuth registration for generic Cline
-clients. Cline therefore connects with a scoped service-agent credential using
-its **Static headers** option.
+Handover offers standard MCP OAuth discovery, dynamic client registration, and
+PKCE for interactive hosts. This Cline recipe uses a scoped service-agent
+credential because Cline's current remote-server wizard exposes **Static
+headers** for this connection. Never substitute a person's OAuth token.
 
 ## Install with the Cline CLI
 

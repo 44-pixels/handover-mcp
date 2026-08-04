@@ -16,18 +16,18 @@ to expose the complete legacy surface.
 
 ## Choose an identity
 
-Use a separate Handover service agent for each durable agent identity. Create it
-under **Workspace or Company -> Agents**, grant only the scopes it needs, and
-store the resulting credential in `HANDOVER_TOKEN`.
+Interactive MCP hosts should use Handover's browser OAuth. The host discovers
+the authorization server, registers itself, and opens a consent screen protected
+by PKCE. Sign in as yourself and review the requested permissions before
+connecting. Handover attributes the resulting work to your human identity.
+
+Use a separate Handover service agent for each unattended agent identity. Create
+it under **Workspace or Company -> Agents**, grant only the scopes it needs,
+and store the resulting credential in `HANDOVER_TOKEN`.
 
 Do not share one credential between people or agents. Handover derives
 authorship from the authenticated credential, so separate identities preserve a
 useful audit trail and can be revoked independently.
-
-Gatana and other clients explicitly configured with Handover's Google OAuth
-application can use per-user browser sign-in. Generic MCP hosts currently use a
-named service credential. Adding the endpoint to a generic host will not open a
-Handover browser sign-in flow yet.
 
 ## Option A: Use the command-line client
 
@@ -50,25 +50,17 @@ handover publish ./report --title "Weekly report"
 
 ## Option B: Connect an MCP host
 
-Export the credential in the shell that launches the host:
-
-```bash
-export HANDOVER_TOKEN='hnd_tok_...'
-```
-
 ### Codex
 
 ```bash
-codex mcp add handover \
-  --url https://handover.sh/api/mcp?profile=core \
-  --bearer-token-env-var HANDOVER_TOKEN
+codex mcp add handover --url https://handover.sh/api/mcp?profile=core
+codex mcp login handover
 ```
 
 ### Claude Code
 
 ```bash
 claude mcp add --transport http --scope user \
-  --header "Authorization: Bearer $HANDOVER_TOKEN" \
   handover https://handover.sh/api/mcp?profile=core
 ```
 
@@ -80,10 +72,7 @@ Add this to `.cursor/mcp.json`:
 {
   "mcpServers": {
     "handover": {
-      "url": "https://handover.sh/api/mcp?profile=core",
-      "headers": {
-        "Authorization": "Bearer ${env:HANDOVER_TOKEN}"
-      }
+      "url": "https://handover.sh/api/mcp?profile=core"
     }
   }
 }
@@ -112,8 +101,8 @@ A correct connection:
 
 ## Test a complete handoff
 
-Use two distinct service agents so the revision history proves that context
-crossed an identity boundary.
+Use two distinct human OAuth sessions or service agents so the revision history
+proves that context crossed an identity boundary.
 
 1. Agent A creates a handover with a short Markdown file and a unique marker.
 2. Agent A records the returned handover slug or URL.
@@ -133,14 +122,16 @@ The raw, agent-readable version of this test is available at
 
 **The host lists no tools**
 
-Confirm that the endpoint ends in `/api/mcp`, the host process can read
-`HANDOVER_TOKEN`, and the credential has not been revoked.
+Confirm that the endpoint ends in `/api/mcp`. For an interactive host, reconnect
+and complete browser authorization. For an unattended host, confirm the process
+can read `HANDOVER_TOKEN` and that the service credential has not been revoked.
 
 **The host opens JSON instead of a sign-in page**
 
-Generic hosts use a service credential today. Create a service agent in
-Handover, export its credential, and reconnect using one of the configurations
-above.
+Confirm the host supports standard remote MCP OAuth and reconnect. Handover
+advertises OAuth metadata at `/.well-known/oauth-protected-resource/api/mcp`
+and dynamically registers interactive clients at `/oauth/register`. Hosts
+without OAuth support must use a named service credential.
 
 **The wrong person or agent appears in history**
 

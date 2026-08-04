@@ -143,15 +143,15 @@ clients and directories can verify compatibility before connecting. Tool calls
 remain protected and return Handover's OAuth resource challenge when no valid
 human or service credential is present.
 
-Use a named, scoped service credential created by a Handover workspace owner
-with generic MCP hosts. Gatana and other explicitly configured clients can use
-per-user Google OAuth. Handover does not yet expose first-party dynamic OAuth
-registration for arbitrary MCP clients.
+Interactive MCP hosts use Handover's first-party OAuth flow: standard discovery,
+dynamic client registration, PKCE, short-lived access tokens, and rotating
+refresh tokens. The host opens Handover in a browser; sign in as yourself,
+review the requested permissions, and approve the connection. Handover records
+your human identity on every attributable action.
 
-Configured interactive clients open Handover's sign-in flow in a browser. Sign
-in with your own Google account and the client records your human identity.
-Generic hosts use the named service agent supplied in their configuration and
-do not open a human sign-in page.
+Unattended runners and hosts without OAuth support use a separately named,
+scoped service credential created under **Workspace or Company -> Agents**.
+Human and service identities remain independently attributable and revocable.
 
 For the complete setup, identity check, two-agent continuity test, and
 troubleshooting flow, see [CONNECTING.md](CONNECTING.md).
@@ -159,17 +159,14 @@ troubleshooting flow, see [CONNECTING.md](CONNECTING.md).
 ### Codex
 
 ```bash
-export HANDOVER_TOKEN='hnd_tok_...'
-codex mcp add handover \
-  --url https://handover.sh/api/mcp?profile=core \
-  --bearer-token-env-var HANDOVER_TOKEN
+codex mcp add handover --url https://handover.sh/api/mcp?profile=core
+codex mcp login handover
 ```
 
 ### Claude Code
 
 ```bash
 claude mcp add --transport http --scope user \
-  --header "Authorization: Bearer $HANDOVER_TOKEN" \
   handover https://handover.sh/api/mcp?profile=core
 ```
 
@@ -177,22 +174,19 @@ claude mcp add --transport http --scope user \
 
 ```bash
 gemini mcp add --transport http --scope user \
-  --header "Authorization: Bearer $HANDOVER_TOKEN" \
   handover https://handover.sh/api/mcp?profile=core
 ```
 
 ### Cursor
 
-Export `HANDOVER_TOKEN`, then add this to `.cursor/mcp.json`:
+Add this to `.cursor/mcp.json`. Cursor discovers Handover's authorization
+server and prompts for browser sign-in when the connection starts:
 
 ```json
 {
   "mcpServers": {
     "handover": {
-      "url": "https://handover.sh/api/mcp?profile=core",
-      "headers": {
-        "Authorization": "Bearer ${env:HANDOVER_TOKEN}"
-      }
+      "url": "https://handover.sh/api/mcp?profile=core"
     }
   }
 }
@@ -365,8 +359,8 @@ Ask the connected host to perform these calls before real work:
 3. Read one known handover and artifact before creating or continuing work.
 
 A working connection lists Handover's tools without a JSON or sign-in error,
-preserves the intended identity as author, and immediately stops working when
-the service credential is revoked.
+preserves the intended identity as author, and immediately stops working after
+the OAuth grant or service credential is revoked.
 
 ## Service agents
 
