@@ -1,0 +1,37 @@
+name: Validate Agent Skills
+
+on:
+  pull_request:
+    paths:
+      - "skills/**"
+      - "templates/handover-skill/**"
+      - "tests/validate-skill.test.mjs"
+      - ".github/workflows/validate-skills.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "skills/**"
+      - "templates/handover-skill/**"
+      - "tests/validate-skill.test.mjs"
+      - ".github/workflows/validate-skills.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          package-manager-cache: false
+      - name: Test the validator
+        run: node --test tests/validate-skill.test.mjs
+      - name: Validate every published skill
+        run: |
+          for skill in skills/*/SKILL.md; do
+            node templates/handover-skill/validate.mjs "$skill"
+          done

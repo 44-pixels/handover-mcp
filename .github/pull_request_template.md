@@ -14,7 +14,8 @@
 ## Evidence
 
 - [ ] `SKILL.md` name matches its folder.
-- [ ] Format validation passes.
+- [ ] `node templates/handover-skill/validate.mjs skills/<name>/SKILL.md` passes.
+- [ ] Agent Skills reference format validation passes.
 - [ ] Successful end-to-end run is described or linked.
 - [ ] Denied or unavailable path was tested.
 - [ ] Identity and authorship come from the authenticated principal.

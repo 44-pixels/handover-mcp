@@ -75,6 +75,10 @@ Use production-equivalent identities to test:
 Record actual evidence for every result. A configuration screenshot is not
 proof that runtime authorization works.
 
+If a required control is unavailable or access is denied unexpectedly, stop
+the change, preserve the current boundary, and report the failed control
+instead of substituting a broader credential.
+
 ## Handle incidents
 
 When a credential may be exposed:

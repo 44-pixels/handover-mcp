@@ -220,13 +220,25 @@ authenticated MCP identity, read-back, denied access, and cross-host
 continuation.
 
 To publish a workflow that uses Handover, start with the
-[contributor contract](CONTRIBUTING.md) and the
+[Agent Skill developer
+kit](https://skills.handover.sh/publish?utm_source=github&utm_medium=referral&utm_campaign=agent_skill_mcp_builder),
+the [contributor contract](CONTRIBUTING.md), and the
 [starter skill](templates/handover-skill/SKILL.template.md). Copy the starter
 into a new `skills/<name>/SKILL.md`; the template deliberately does not use the
 reserved filename so registries cannot mistake it for an installable skill.
 Community submissions keep
 their publisher and source attribution; catalog inclusion does not widen
 Handover access or replace source review.
+
+Validate the local contract before testing the authenticated workflow:
+
+```bash
+node templates/handover-skill/validate.mjs skills/<name>/SKILL.md
+```
+
+Passing this validator proves the file contract, not host discovery, MCP
+authentication, permissions, read-back, or denied behavior. The developer kit
+keeps those runtime checks explicit.
 
 ## Open continuity benchmark
 

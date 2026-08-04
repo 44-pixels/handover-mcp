@@ -50,8 +50,14 @@ Official skills are maintained by 44pixels. Community skills retain their
 publisher and repository attribution. Listing is not a security guarantee:
 users must be able to inspect the complete source before installation.
 
-Validate locally with the Agent Skills reference validator when available and
-confirm public discovery with:
+Run the repository's dependency-free Handover contract validator:
+
+```bash
+node templates/handover-skill/validate.mjs skills/<skill-name>/SKILL.md
+```
+
+Then validate the open file format with the Agent Skills reference validator
+when available and confirm repository discovery with:
 
 ```bash
 npx skills add . --list

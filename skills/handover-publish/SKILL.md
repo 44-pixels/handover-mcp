@@ -91,3 +91,6 @@ Read the created record through the other interface when possible. Confirm:
 - the stable identifier or URL can be given to the successor.
 
 Do not report success from a local file write or a command exit alone.
+If access is denied or the selected interface is unavailable, do not switch to
+another identity or claim the work was saved. Keep credentials and tokens out
+of the artifact set and report the first failed layer.

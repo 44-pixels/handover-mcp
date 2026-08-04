@@ -30,6 +30,11 @@ Confirm the intended account and workspace before searching. An empty result
 can be correct when the identity lacks access; do not bypass it with a copied
 URL, author name, or organization parameter.
 
+Use only the smallest workspace scope needed for the requested record. Never
+print, copy into artifacts, or ask the user to paste credentials or tokens.
+If access is denied, preserve the boundary and report it instead of switching
+to a broader identity.
+
 ## Resolve the canonical record
 
 1. If given a Handover URL, slug, or identifier, open that exact record.

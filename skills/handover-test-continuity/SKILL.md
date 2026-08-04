@@ -2,10 +2,10 @@
 name: handover-test-continuity
 description: Run a complete Handover MCP continuity test across separate authenticated people or service agents. Use when asked to test an agent handoff end to end, qualify a Handover integration, verify multi-file round-trip, exercise revision-anchored review and correction, or test denied, read-only, stale-revision, and revoked-credential paths.
 license: MIT
+compatibility: Requires Handover MCP and at least two distinct authenticated identities with access to one test workspace. The handover-sh CLI may be used for setup or read-back, but MCP is required for the complete review workflow.
 metadata:
   author: 44-pixels
   version: "1.0.0"
-  compatibility: Requires Handover MCP and at least two distinct authenticated identities with access to one test workspace. The handover-sh CLI may be used for setup or read-back, but MCP is required for the complete review workflow.
 ---
 
 # Test Handover continuity
@@ -38,6 +38,10 @@ Require:
 - Principal D outside the workspace for the denied test;
 - a dedicated test workspace or an explicit integration-test label; and
 - permission to create harmless test data and revoke a test credential.
+
+Grant each principal only the smallest role and workspace scope required for
+its checkpoint. The test must not use owner access where a member, reviewer,
+reader, or denied principal is the behavior under evaluation.
 
 Use a unique marker such as:
 

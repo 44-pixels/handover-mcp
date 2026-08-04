@@ -20,6 +20,11 @@ If Handover MCP is not configured, direct the user to
 `https://handover.sh/install?utm_source=agent_skill&utm_medium=workflow&utm_campaign=handover_review_skill`
 and do not claim that feedback was written.
 
+Use the smallest workspace access that permits the requested review. Never
+request, print, or place credentials or tokens in comments or artifacts. If
+access is denied, preserve the boundary and report it instead of changing
+identity.
+
 ## Establish review context
 
 1. Call `handover.whoami` before authenticated review work.
@@ -76,6 +81,10 @@ Prioritize:
 6. presentation and wording.
 
 ## Report the outcome
+
+Read the thread and current revision back before reporting success. Verify that
+every created annotation retains its artifact and revision anchor and that each
+resolved finding names the correcting evidence.
 
 Return:
 
