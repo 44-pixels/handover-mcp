@@ -32,6 +32,21 @@ resolution. No account is required.
 - [Raw SQL](https://handover.sh/demo/inventory.sql)
 - [Evidence JSON](https://handover.sh/demo/evidence.json)
 
+## Move from Claude Code to Codex
+
+Codex's built-in import is the right first choice for a one-time move of
+supported Claude Code setup, projects, memories, and recent chats. Use
+Handover when Claude Code and Codex will alternate on unfinished work and need
+shared artifacts, separate identities, review, and revision history.
+
+The [Claude Code to Codex transfer
+recipe](examples/claude-code-to-codex-context-transfer.md) contains the exact
+sender checkpoint, two-host service-credential setup, receiver verification,
+optimistic-concurrency continuation, revocation test, and pass criteria. The
+[rendered
+guide](https://handover.sh/guides/transfer-context-from-claude-code-to-codex?utm_source=github&utm_medium=referral&utm_campaign=claude_code_to_codex)
+explains when to use native import and when to use a durable handoff.
+
 ## Run the reviewed MCP handoff
 
 The demo shows the finished record. The
@@ -331,6 +346,8 @@ codex mcp add handover \
 - [Install and host-specific setup](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [MCP memory setup for Claude Code, Cursor, and Codex](https://handover.sh/guides/mcp-memory-server-for-claude-code-cursor-codex?utm_source=github&utm_medium=referral&utm_campaign=mcp_memory_setup)
 - [Raw cross-host setup and continuity test](https://handover.sh/examples/mcp-memory-server-setup.md?utm_source=github&utm_medium=referral&utm_campaign=mcp_memory_setup)
+- [Claude Code to Codex context transfer](examples/claude-code-to-codex-context-transfer.md)
+- [Rendered Claude Code to Codex guide](https://handover.sh/guides/transfer-context-from-claude-code-to-codex?utm_source=github&utm_medium=referral&utm_campaign=claude_code_to_codex)
 - [Connection and verification runbook](CONNECTING.md)
 - [MCP workflow guide](https://handover.sh/guides/mcp-workflow-for-multi-agent-collaboration?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [MCP OAuth vs service accounts](https://handover.sh/guides/mcp-oauth-vs-service-accounts?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
