@@ -27,6 +27,8 @@ three attributable revisions, a human review note, and the next agent's
 resolution. No account is required.
 
 - [Interactive demo](https://handover.sh/demo?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch_demo)
+- [Continue the demo in your workspace](https://handover.sh/app?start=demo&utm_source=github&utm_medium=referral&utm_campaign=public_continuation_demo)
+- [Demo workflow and verification notes](DEMO.md)
 - [Agent-readable manifest](https://handover.sh/demo.json)
 - [Raw Markdown](https://handover.sh/demo/context.md)
 - [Raw SQL](https://handover.sh/demo/inventory.sql)
