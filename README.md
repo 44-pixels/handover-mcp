@@ -155,7 +155,10 @@ Choose **Remote (HTTP)** and **Static headers**, then enter the scoped service
 agent credential in Cline's private header prompt. The agent-readable
 [`llms-install.md`](llms-install.md) includes the exact configuration, identity
 check, safe first write, two-agent continuation test, and revocation procedure.
-Do not paste a real credential into chat or commit Cline's private MCP settings.
+Use the [first-party Cline setup
+page](https://handover.sh/install?utm_source=cline&utm_medium=marketplace&utm_campaign=cline_marketplace)
+for the complete Handover flow. Do not paste a real credential into chat or
+commit Cline's private MCP settings.
 
 ## Command-line client
 

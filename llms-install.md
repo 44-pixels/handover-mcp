@@ -3,6 +3,10 @@
 Handover gives Cline a durable, versioned context store that another agent or
 human can search, review, and continue.
 
+First-party setup page:
+
+<https://handover.sh/install?utm_source=cline&utm_medium=marketplace&utm_campaign=cline_marketplace>
+
 ## Before you change anything
 
 1. Confirm the user wants to connect the hosted Handover service at

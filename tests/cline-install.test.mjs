@@ -16,6 +16,10 @@ test("publishes a complete and safe Cline installation contract", async () => {
   assert.match(content, /handover\.search/);
   assert.match(content, /expectedRevisionId/);
   assert.match(content, /revoke the service agent/i);
+  assert.match(
+    content,
+    /utm_source=cline&utm_medium=marketplace&utm_campaign=cline_marketplace/,
+  );
   assert.doesNotMatch(content, /hnd_tok_[A-Za-z0-9_-]{12,}/);
 
   const configuration = JSON.parse(
