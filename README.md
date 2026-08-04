@@ -174,7 +174,10 @@ continuation.
 
 To publish a workflow that uses Handover, start with the
 [contributor contract](CONTRIBUTING.md) and the
-[starter skill](templates/handover-skill/SKILL.md). Community submissions keep
+[starter skill](templates/handover-skill/SKILL.template.md). Copy the starter
+into a new `skills/<name>/SKILL.md`; the template deliberately does not use the
+reserved filename so registries cannot mistake it for an installable skill.
+Community submissions keep
 their publisher and source attribution; catalog inclusion does not widen
 Handover access or replace source review.
 

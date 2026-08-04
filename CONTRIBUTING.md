@@ -10,9 +10,11 @@ contribution teaches one repeatable workflow that uses Handover MCP or the
 npx skills init my-handover-skill
 ```
 
-Use `templates/handover-skill/SKILL.md` as the Handover-specific contract.
-Keep the skill in `skills/<skill-name>/SKILL.md`, use the same lowercase
-hyphenated name in the folder and frontmatter, and keep the main file concise.
+Copy `templates/handover-skill/SKILL.template.md` into
+`skills/<skill-name>/SKILL.md` as the Handover-specific contract. The starter
+uses a non-reserved filename so repository scanners do not publish it as a
+real skill. Use the same lowercase hyphenated name in the folder and
+frontmatter, and keep the main file concise.
 
 ## Required metadata
 
