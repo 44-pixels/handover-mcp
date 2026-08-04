@@ -31,6 +31,27 @@ resolution. No account is required.
 - [Raw SQL](https://handover.sh/demo/inventory.sql)
 - [Evidence JSON](https://handover.sh/demo/evidence.json)
 
+## Run the reviewed MCP handoff
+
+The demo shows the finished record. The
+[end-to-end MCP handoff procedure](examples/end-to-end-mcp-handoff-workflow.md)
+tests the workflow itself across separate authenticated identities:
+
+1. verify the publisher;
+2. publish Markdown, SQL, and JSON;
+3. read every artifact back;
+4. review exact evidence from another identity;
+5. publish a correction with optimistic concurrency;
+6. resolve the finding against the correcting revision; and
+7. prove a fresh successor can continue without the original chat.
+
+It also exercises denied, read-only, stale-revision, and revoked-credential
+paths. Use the [rendered
+guide](https://handover.sh/guides/end-to-end-mcp-agent-handoff?utm_source=github&utm_medium=referral&utm_campaign=mcp_handoff_e2e)
+for the rationale, or connect an agent through the
+[install flow](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_handoff_e2e)
+before running the repository procedure.
+
 ## Connect
 
 The canonical Streamable HTTP endpoint is:
@@ -249,6 +270,8 @@ codex mcp add handover \
 ## Discovery and documentation
 
 - [No-login continuation demo](https://handover.sh/demo?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch_demo)
+- [End-to-end reviewed MCP handoff](examples/end-to-end-mcp-handoff-workflow.md)
+- [Rendered MCP handoff guide](https://handover.sh/guides/end-to-end-mcp-agent-handoff?utm_source=github&utm_medium=referral&utm_campaign=mcp_handoff_e2e)
 - [Install and host-specific setup](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 - [MCP memory setup for Claude Code, Cursor, and Codex](https://handover.sh/guides/mcp-memory-server-for-claude-code-cursor-codex?utm_source=github&utm_medium=referral&utm_campaign=mcp_memory_setup)
 - [Raw cross-host setup and continuity test](https://handover.sh/examples/mcp-memory-server-setup.md?utm_source=github&utm_medium=referral&utm_campaign=mcp_memory_setup)
