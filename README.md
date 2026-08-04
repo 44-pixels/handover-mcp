@@ -6,6 +6,7 @@ service agents without losing decisions, files, history, or authorship.
 [![npm CLI](https://img.shields.io/npm/v/handover-sh?label=handover-sh&logo=npm)](https://www.npmjs.com/package/handover-sh)
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-verified-2684ff)](https://registry.modelcontextprotocol.io/v0.1/servers?search=sh.handover%2Fhandover)
 [![Agent Skills](https://img.shields.io/badge/Agent_Skills-7-84cc16)](https://skills.handover.sh/?utm_source=github&utm_medium=referral&utm_campaign=agent_skills_launch)
+[![skills.sh](https://skills.sh/b/44-pixels/handover-mcp)](https://www.skills.sh/44-pixels/handover-mcp)
 [![MIT License](https://img.shields.io/badge/license-MIT-111111)](LICENSE)
 
 [Handover](https://handover.sh/?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
