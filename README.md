@@ -83,6 +83,22 @@ explains each verification step. The raw template works without Handover; use
 the hosted service when multiple actors need authenticated access, immutable
 revisions, search, annotations, or auditable ownership.
 
+## Test company AI context readiness
+
+Before connecting company knowledge to several people and agents, use the
+[company AI context readiness checklist](templates/company-ai-context-readiness.md).
+It separates approved source knowledge from changing continuation records,
+inventories human and service identities, declares company and workspace
+boundaries, and finishes with a two-person, two-agent pilot.
+
+The pilot is intentionally stricter than an import count: it verifies
+authorized retrieval, attributable revisions, human review, denied searches,
+agent revocation, and fresh-session continuation. The
+[source-linked architecture
+guide](https://handover.sh/guides/shared-workspace-for-humans-and-ai-agents?utm_source=github&utm_medium=referral&utm_campaign=company_ai_knowledge)
+explains why a search index, private model memory, and canonical company
+records have different responsibilities.
+
 ## Use the open handoff format
 
 The [Handoff Continuity
@@ -357,6 +373,8 @@ codex mcp add handover \
 
 - [No-login continuation demo](https://handover.sh/demo?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch_demo)
 - [AI agent handoff checklist](templates/agent-handoff.md)
+- [Company AI context readiness checklist](templates/company-ai-context-readiness.md)
+- [Shared knowledge base architecture guide](https://handover.sh/guides/shared-workspace-for-humans-and-ai-agents?utm_source=github&utm_medium=referral&utm_campaign=company_ai_knowledge)
 - [End-to-end reviewed MCP handoff](examples/end-to-end-mcp-handoff-workflow.md)
 - [Rendered MCP handoff guide](https://handover.sh/guides/end-to-end-mcp-agent-handoff?utm_source=github&utm_medium=referral&utm_campaign=mcp_handoff_e2e)
 - [Install and host-specific setup](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
