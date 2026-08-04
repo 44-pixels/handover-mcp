@@ -68,6 +68,21 @@ for the rationale, or connect an agent through the
 [install flow](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_handoff_e2e)
 before running the repository procedure.
 
+## Use the AI agent handoff checklist
+
+For a smaller local handoff, start with the
+[Markdown checklist](templates/agent-handoff.md). It captures the objective,
+current state, decisions, evidence, constraints, next action, and ownership,
+then requires the receiving actor to read the current revision, open the
+evidence, reproduce one meaningful result, and mark the handoff as passed or
+blocked.
+
+The [rendered checklist and
+FAQ](https://handover.sh/templates/agent-handoff?utm_source=github&utm_medium=referral&utm_campaign=agent_handoff_checklist)
+explains each verification step. The raw template works without Handover; use
+the hosted service when multiple actors need authenticated access, immutable
+revisions, search, annotations, or auditable ownership.
+
 ## Use the open handoff format
 
 The [Handoff Continuity
@@ -341,6 +356,7 @@ codex mcp add handover \
 ## Discovery and documentation
 
 - [No-login continuation demo](https://handover.sh/demo?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch_demo)
+- [AI agent handoff checklist](templates/agent-handoff.md)
 - [End-to-end reviewed MCP handoff](examples/end-to-end-mcp-handoff-workflow.md)
 - [Rendered MCP handoff guide](https://handover.sh/guides/end-to-end-mcp-agent-handoff?utm_source=github&utm_medium=referral&utm_campaign=mcp_handoff_e2e)
 - [Install and host-specific setup](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)

@@ -15,6 +15,9 @@ can validate and continue without receiving the original conversation.
 
 The open format is documented at `https://handover.sh/protocol`. Its canonical
 JSON Schema is `https://handover.sh/protocol/v1/schema.json`.
+For a human-readable Markdown workflow and receiver verification checklist,
+use
+`https://handover.sh/templates/agent-handoff.md?utm_source=agent_skill&utm_medium=workflow&utm_campaign=agent_handoff_checklist`.
 
 ## Choose the outcome
 
