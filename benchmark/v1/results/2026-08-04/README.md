@@ -52,6 +52,7 @@ pure measure of context retention.
 ## Files
 
 - `summary.json`: machine-readable aggregate and caveats.
+- `summary.csv`: flat condition-level result table.
 - `openai-submission.json`: strict-parse submission sent to the scorer.
 - `openai-result.json`: deterministic per-condition and per-field scores.
 - `anthropic-submission.json`: strict-parse submission sent to the scorer.
@@ -63,6 +64,18 @@ The benchmark method, dataset, answer key, prompt generator, and scorer are
 published at:
 
 https://handover.sh/benchmark
+
+## Cite this benchmark
+
+Use the canonical citation metadata at:
+
+- https://handover.sh/benchmark/v1/CITATION.cff
+- https://handover.sh/benchmark/v1/citation.bib
+
+Suggested citation:
+
+> 44pixels Ltd. (2026). AI Handoff Continuity Benchmark
+> (1.0.0-pilot). Handover. https://handover.sh/benchmark
 
 ## Limitations
 

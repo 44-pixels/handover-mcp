@@ -1,0 +1,4 @@
+condition,mean_score,openai_score,anthropic_score,observations_per_condition,total_cases,run_date,benchmark_version
+Structured handoff,79.45,100.00,58.89,6,3,2026-08-04,1.0.0-pilot
+Conversation transcript,76.67,100.00,53.33,6,3,2026-08-04,1.0.0-pilot
+Compressed memory,45.00,66.67,23.33,6,3,2026-08-04,1.0.0-pilot

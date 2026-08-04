@@ -104,11 +104,30 @@ raw response bodies are available at:
 
 https://handover.sh/benchmark/v1/results/2026-08-04/README.md
 
+## Cite and reuse
+
+The dataset is licensed under CC BY 4.0. Cite the canonical benchmark page and
+state the dataset version when reusing the method, values, or result table.
+
+- `CITATION.cff`: citation metadata for GitHub, reference managers, and agents.
+- `citation.bib`: ready-to-import BibTeX.
+- `results/2026-08-04/summary.csv`: flat result table for analysis and charts.
+- `results/2026-08-04/summary.json`: aggregate values, execution metadata, and
+  caveats.
+
+Canonical citation:
+
+> 44pixels Ltd. (2026). AI Handoff Continuity Benchmark
+> (1.0.0-pilot). Handover. https://handover.sh/benchmark
+
 ## Files
 
 - `dataset.json`: cases, context conditions, candidates, answer keys, rubric.
 - `run.mjs`: prompt exporter, submission template generator, deterministic
   scorer, and scorer self-test.
+- `CITATION.cff`: canonical citation metadata.
+- `citation.bib`: BibTeX citation.
+- `results/2026-08-04/summary.csv`: flat pilot result table.
 
 Dataset license: CC BY 4.0. Runner license: MIT.
 

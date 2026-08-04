@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this dataset or runner, cite the AI Handoff Continuity Benchmark."
+title: "AI Handoff Continuity Benchmark"
+type: dataset
+authors:
+  - name: "44pixels Ltd"
+    website: "https://44pixels.ai"
+version: "1.0.0-pilot"
+date-released: 2026-08-04
+url: "https://handover.sh/benchmark"
+repository-code: "https://github.com/44-pixels/handover-mcp/tree/main/benchmark/v1"
+license: CC-BY-4.0
+abstract: >-
+  An open, reproducible pilot benchmark measuring whether an AI model can
+  recover continuation-critical state from a conversation transcript,
+  compressed memory, or structured handoff.
+keywords:
+  - AI agent handoff
+  - context continuity
+  - multi-agent systems
+  - Model Context Protocol
+  - agent memory

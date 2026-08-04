@@ -325,7 +325,11 @@ transcripts at 76.67, and compressed memory at 45.00. It is a small authored
 pilot rather than a model leaderboard. The public [`benchmark/`](benchmark/)
 directory contains the dataset, answer key, dependency-free scorer, strict
 submissions, deterministic results, limitations, and all 18 raw response
-bodies.
+bodies. Reuse the published
+[`CITATION.cff`](benchmark/v1/CITATION.cff),
+[`citation.bib`](benchmark/v1/citation.bib), or flat
+[`summary.csv`](benchmark/v1/results/2026-08-04/summary.csv) instead of
+transcribing values from the page.
 
 ```bash
 cd benchmark/v1
