@@ -5,12 +5,12 @@ service agents without losing decisions, files, history, or authorship.
 
 [![npm CLI](https://img.shields.io/npm/v/handover-sh?label=handover-sh&logo=npm)](https://www.npmjs.com/package/handover-sh)
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-verified-2684ff)](https://registry.modelcontextprotocol.io/v0.1/servers?search=sh.handover%2Fhandover)
-[![Agent Skills](https://img.shields.io/badge/Agent_Skills-6-84cc16)](https://skills.handover.sh/?utm_source=github&utm_medium=referral&utm_campaign=agent_skills_launch)
+[![Agent Skills](https://img.shields.io/badge/Agent_Skills-7-84cc16)](https://skills.handover.sh/?utm_source=github&utm_medium=referral&utm_campaign=agent_skills_launch)
 [![MIT License](https://img.shields.io/badge/license-MIT-111111)](LICENSE)
 
 [Handover](https://handover.sh/?utm_source=github&utm_medium=referral&utm_campaign=mcp_launch)
 provides shared, versioned context for humans and AI agents through a hosted
-Model Context Protocol server, a dependency-free CLI, and six open Agent
+Model Context Protocol server, a dependency-free CLI, and seven open Agent
 Skills. This repository is the public source, discovery, installation, and
 connection record for those interfaces.
 
@@ -51,6 +51,29 @@ guide](https://handover.sh/guides/end-to-end-mcp-agent-handoff?utm_source=github
 for the rationale, or connect an agent through the
 [install flow](https://handover.sh/install?utm_source=github&utm_medium=referral&utm_campaign=mcp_handoff_e2e)
 before running the repository procedure.
+
+## Use the open handoff format
+
+The [Handoff Continuity
+Record](https://handover.sh/protocol?utm_source=github&utm_medium=referral&utm_campaign=handoff_continuity_record)
+is a platform-neutral JSON format for the state another human or AI agent needs
+to verify and continue work. It records the objective, verified and unverified
+state, decisions, evidence, constraints, next action, ownership, and open
+review without prescribing transport, routing, authentication, or storage.
+
+The [`protocol/v1/`](protocol/v1/) directory contains:
+
+- a JSON Schema Draft 2020-12 contract;
+- a valid inventory-reporting example;
+- a dependency-free Node.js conformance checker; and
+- producer, receiver, scope, and security requirements.
+
+```bash
+node protocol/v1/validate.mjs protocol/v1/example.json
+```
+
+MCP can expose the tools used to read and write the record. A2A or an
+orchestration framework can route it. Git or Handover can store it.
 
 ## Connect
 
@@ -159,13 +182,15 @@ open Agent Skills format:
 
 ```bash
 npx skills add 44-pixels/handover-mcp --list
+npx skills add 44-pixels/handover-mcp --skill handover-record
 npx skills add 44-pixels/handover-mcp --skill handover-publish
 npx skills add 44-pixels/handover-mcp --skill handover-test-continuity
 ```
 
-The public collection includes skills for verifying connections, publishing
-context, resuming work, reviewing revision-anchored feedback, testing complete
-multi-identity continuity, and governing agent access. Browse the
+The public collection includes skills for creating and validating portable
+handoff records, verifying connections, publishing context, resuming work,
+reviewing revision-anchored feedback, testing complete multi-identity
+continuity, and governing agent access. Browse the
 catalog at [skills.handover.sh](https://skills.handover.sh/) or inspect the
 source in [`skills/`](skills/). The collection is also indexed in the
 [Skills.sh directory](https://www.skills.sh/44-pixels/handover-mcp).

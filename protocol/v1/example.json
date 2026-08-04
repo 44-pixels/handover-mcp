@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0",
+  "recordId": "inventory-reporting-v3",
+  "objective": {
+    "summary": "Correct the daily inventory report so reserved stock is excluded from available inventory.",
+    "acceptanceCriteria": [
+      "Available inventory equals on-hand stock minus reserved stock.",
+      "The corrected query passes the fixture in evidence/test-output.json.",
+      "The open SQL review is resolved against the correcting revision."
+    ]
+  },
+  "currentState": {
+    "complete": [
+      "Located the inventory aggregation in artifacts/inventory.sql.",
+      "Reproduced the overstatement with the warehouse fixture."
+    ],
+    "inProgress": [
+      "Correct the available inventory calculation and publish a new revision."
+    ],
+    "blocked": [],
+    "unverified": [
+      "Whether the downstream dashboard cache requires invalidation."
+    ]
+  },
+  "decisions": [
+    {
+      "summary": "Calculate available inventory as on_hand minus reserved.",
+      "rationale": "Reserved units remain physically present but cannot be promised to a new order.",
+      "status": "active"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "inventory-query",
+      "label": "Current inventory query",
+      "claim": "The current query reports on-hand stock as available stock.",
+      "artifactRef": "artifacts/inventory.sql",
+      "contentType": "application/sql"
+    },
+    {
+      "id": "fixture-output",
+      "label": "Failing warehouse fixture",
+      "claim": "The fixture expects 58 available units and the current query returns 70.",
+      "artifactRef": "evidence/test-output.json",
+      "contentType": "application/json"
+    }
+  ],
+  "constraints": [
+    {
+      "kind": "safety",
+      "text": "Do not modify source inventory rows while correcting the reporting query."
+    },
+    {
+      "kind": "permission",
+      "text": "Production deployment requires approval from the inventory reporting owner."
+    }
+  ],
+  "nextAction": {
+    "summary": "Update artifacts/inventory.sql, run the fixture, and publish both files as the next revision.",
+    "verification": "The fixture returns 58 available units and the new revision is linked from the resolved SQL review."
+  },
+  "ownership": {
+    "nextActor": {
+      "id": "agent:inventory-corrector",
+      "displayName": "Inventory corrector",
+      "type": "agent"
+    },
+    "reviewers": [
+      {
+        "id": "user:finance-owner",
+        "displayName": "Finance owner",
+        "type": "human"
+      }
+    ]
+  },
+  "openReview": [
+    {
+      "id": "review:sql-available-stock",
+      "summary": "Available inventory does not subtract reserved stock.",
+      "status": "open",
+      "artifactRef": "artifacts/inventory.sql",
+      "revision": 3,
+      "assignee": {
+        "id": "agent:inventory-corrector",
+        "displayName": "Inventory corrector",
+        "type": "agent"
+      }
+    }
+  ],
+  "provenance": {
+    "createdBy": {
+      "id": "agent:inventory-auditor",
+      "displayName": "Inventory auditor",
+      "type": "agent"
+    },
+    "createdAt": "2026-08-04T00:00:00Z",
+    "sourceRevision": 3
+  }
+}

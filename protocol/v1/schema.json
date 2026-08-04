@@ -1,0 +1,340 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://handover.sh/protocol/v1/schema.json",
+  "title": "Handoff Continuity Record",
+  "description": "A platform-neutral record of the state another human or AI agent needs to verify and continue interrupted work.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "objective",
+    "currentState",
+    "decisions",
+    "evidence",
+    "constraints",
+    "nextAction",
+    "ownership",
+    "openReview"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "objective": {
+      "$ref": "#/$defs/objective"
+    },
+    "currentState": {
+      "$ref": "#/$defs/currentState"
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/decision"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/constraint"
+      }
+    },
+    "nextAction": {
+      "$ref": "#/$defs/nextAction"
+    },
+    "ownership": {
+      "$ref": "#/$defs/ownership"
+    },
+    "openReview": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reviewItem"
+      }
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Namespaced implementation-specific data. Extension keys should use a reverse-domain or absolute-URI namespace.",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "nonEmptyText": {
+      "type": "string",
+      "minLength": 1
+    },
+    "textList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyText"
+      },
+      "uniqueItems": true
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "displayName": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "type": {
+          "enum": [
+            "human",
+            "agent",
+            "service"
+          ]
+        }
+      }
+    },
+    "objective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "acceptanceCriteria"
+      ],
+      "properties": {
+        "summary": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "acceptanceCriteria": {
+          "$ref": "#/$defs/textList"
+        }
+      }
+    },
+    "currentState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "complete",
+        "inProgress",
+        "blocked",
+        "unverified"
+      ],
+      "properties": {
+        "complete": {
+          "$ref": "#/$defs/textList"
+        },
+        "inProgress": {
+          "$ref": "#/$defs/textList"
+        },
+        "blocked": {
+          "$ref": "#/$defs/textList"
+        },
+        "unverified": {
+          "$ref": "#/$defs/textList"
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "rationale",
+        "status"
+      ],
+      "properties": {
+        "summary": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "status": {
+          "enum": [
+            "active",
+            "superseded"
+          ]
+        },
+        "supersedes": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "label": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "claim": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "artifactRef": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "contentType": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "uri"
+          ]
+        },
+        {
+          "required": [
+            "artifactRef"
+          ]
+        }
+      ]
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "text"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "permission",
+            "safety",
+            "deadline",
+            "budget",
+            "dependency",
+            "exclusion",
+            "other"
+          ]
+        },
+        "text": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "nextAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "verification"
+      ],
+      "properties": {
+        "summary": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "verification": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "dueAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nextActor"
+      ],
+      "properties": {
+        "nextActor": {
+          "$ref": "#/$defs/actor"
+        },
+        "reviewers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/actor"
+          }
+        }
+      }
+    },
+    "reviewItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "summary",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "summary": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "resolved"
+          ]
+        },
+        "artifactRef": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "assignee": {
+          "$ref": "#/$defs/actor"
+        },
+        "resolvedByRevision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "createdBy",
+        "createdAt"
+      ],
+      "properties": {
+        "createdBy": {
+          "$ref": "#/$defs/actor"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}
