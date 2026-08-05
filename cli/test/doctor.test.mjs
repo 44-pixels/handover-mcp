@@ -1,12 +1,21 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { createServer } from "node:http";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import test from "node:test";
 
 const cli = resolve(import.meta.dirname, "../handover.mjs");
+
+test("reports the same version as the package manifest", async () => {
+  const manifest = JSON.parse(
+    await readFile(resolve(import.meta.dirname, "../package.json"), "utf8"),
+  );
+  const result = await runCli(["--version"]);
+  assert.equal(result.code, 0, result.stderr);
+  assert.equal(result.stdout.trim(), manifest.version);
+});
 
 test("doctor verifies identity and a context read without exposing the token", async () => {
   const requests = [];

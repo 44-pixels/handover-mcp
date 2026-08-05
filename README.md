@@ -34,6 +34,23 @@ resolution. No account is required.
 - [Raw SQL](https://handover.sh/demo/inventory.sql)
 - [Evidence JSON](https://handover.sh/demo/evidence.json)
 
+## Build a private handoff prompt
+
+The [AI handoff prompt
+generator](https://handover.sh/tools/ai-handoff-prompt-generator?utm_source=github&utm_medium=referral&utm_campaign=ai_handoff_prompt)
+turns unfinished work into separate capture and receiver prompts without
+requiring an account. Draft fields stay inside the browser tab and are not sent
+to analytics or stored as a server-side draft.
+
+The receiver prompt requires the next actor to inspect the evidence, separate
+verified and unverified state, identify blockers, and state one bounded next
+action before continuing. Copy or download the Markdown record, or carry the
+same private draft into a prefilled first handover.
+
+- [Open the private prompt generator](https://handover.sh/tools/ai-handoff-prompt-generator?utm_source=github&utm_medium=referral&utm_campaign=ai_handoff_prompt)
+- [Inspect the raw Markdown example](https://handover.sh/examples/ai-handoff-prompt.md)
+- [Decide when `HANDOFF.md` is enough](https://handover.sh/guides/handover-vs-handoff-md?utm_source=github&utm_medium=referral&utm_campaign=ai_handoff_prompt)
+
 ## Move from Claude Code to Codex
 
 Codex's built-in import is the right first choice for a one-time move of

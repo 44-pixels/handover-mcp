@@ -7,6 +7,13 @@ Cursor, Gemini CLI, people, and service agents.
 without creating an account. It includes Markdown, SQL, JSON, an image, review
 feedback, and attributable revisions.
 
+Need to structure unfinished work before installing anything? The [private AI
+handoff prompt
+generator](https://handover.sh/tools/ai-handoff-prompt-generator?utm_source=npm&utm_medium=registry&utm_campaign=ai_handoff_prompt)
+creates capture and receiver prompts in the browser, keeps draft contents out
+of analytics and server-side storage, and can carry the same draft into a
+prefilled first handover.
+
 ## Quick start
 
 ```bash
