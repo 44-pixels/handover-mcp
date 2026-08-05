@@ -3,6 +3,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import process from "node:process";
+import { fileURLToPath } from "node:url";
 
 const DEFAULT_DATASET = new URL("./dataset.json", import.meta.url);
 const DIMENSIONS = [
@@ -17,12 +18,17 @@ const DIMENSIONS = [
 ];
 const SINGLE_VALUE = new Set(["objective", "nextAction", "owner"]);
 
-main().catch((error) => {
-  process.stderr.write(
-    `continuity-benchmark: ${error instanceof Error ? error.message : String(error)}\n`,
-  );
-  process.exitCode = 1;
-});
+if (
+  process.argv[1] &&
+  resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  main().catch((error) => {
+    process.stderr.write(
+      `continuity-benchmark: ${error instanceof Error ? error.message : String(error)}\n`,
+    );
+    process.exitCode = 1;
+  });
+}
 
 async function main() {
   const options = parseArguments(process.argv.slice(2));

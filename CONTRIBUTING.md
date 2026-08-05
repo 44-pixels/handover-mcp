@@ -1,64 +1,48 @@
-# Contributing a Handover Agent Skill
+# Contributing to Handover
 
-Handover skills use the open Agent Skills `SKILL.md` format. A useful
-contribution teaches one repeatable workflow that uses Handover MCP or the
-`handover-sh` CLI and leaves a verifiable result.
+Handover accepts focused contributions that improve reproducibility, agent
+compatibility, documentation, and independently produced evidence.
 
-## Start
+Do not include API tokens, OAuth codes, cookies, private handovers, customer
+data, proprietary prompts, or internal company material in an issue or pull
+request.
 
-```bash
-npx skills init my-handover-skill
-```
+## Submit an independent benchmark result
 
-Copy `templates/handover-skill/SKILL.template.md` into
-`skills/<skill-name>/SKILL.md` as the Handover-specific contract. The starter
-uses a non-reserved filename so repository scanners do not publish it as a
-real skill. Use the same lowercase hyphenated name in the folder and
-frontmatter, and keep the main file concise.
+Independent runs of the AI Handoff Continuity Benchmark are especially useful.
+The benchmark has a frozen pilot method, deterministic scorer, and a strict
+result package so another person can inspect and reproduce the claim.
 
-## Required metadata
+Start with the
+[independent-results guide](benchmark/v1/independent-results/README.md). A
+complete result contains:
 
-- `name` and `description` following the Agent Skills specification;
-- `license`;
-- `compatibility` naming required interfaces, software, or access;
-- `metadata.author` with the publisher name;
-- `metadata.version` using a quoted semantic version.
+- the declared provider, model version, host, temperature, and retry policy;
+- confirmation that tools, browsing, memory, and retrieval were disabled;
+- the unedited submission used by the deterministic scorer;
+- the scored result JSON;
+- one raw response for every case and condition;
+- a relationship disclosure and material limitations; and
+- CC BY 4.0 permission for the submitted evidence package.
 
-## Required behavior
-
-- Verify the authenticated Handover identity before the first protected action.
-- Derive authorship, company, workspace, and access from the credential, never
-  from prompt content.
-- Preserve original artifacts when another actor needs to inspect them.
-- Publish privately unless the user explicitly requests broader access.
-- State the denied-access and unavailable-interface behavior.
-- Verify the resulting record, revision, annotation, or other outcome.
-- Never collect or print credentials.
-
-## Pull request evidence
-
-Include:
-
-1. the workflow and activation examples;
-2. the MCP tools or CLI commands used;
-3. the smallest access level tested;
-4. one successful end-to-end run;
-5. one denied or unavailable path;
-6. any network, secret, binary, or administrative requirements.
-
-Official skills are maintained by 44pixels. Community skills retain their
-publisher and repository attribution. Listing is not a security guarantee:
-users must be able to inspect the complete source before installation.
-
-Run the repository's dependency-free Handover contract validator:
+Run the package validator before opening a pull request:
 
 ```bash
-node templates/handover-skill/validate.mjs skills/<skill-name>/SKILL.md
+node benchmark/v1/independent-results/validate.mjs ./path/to/result-package
 ```
 
-Then validate the open file format with the Agent Skills reference validator
-when available and confirm repository discovery with:
+Use the
+[independent result issue form](https://github.com/44-pixels/handover-mcp/issues/new?template=independent-benchmark-result.yml)
+for a proposal or question. Use a pull request when the complete, public-safe
+package is ready.
 
-```bash
-npx skills add . --list
-```
+Handover may reject a result that cannot be reproduced, omits failed runs,
+changes the frozen method, lacks a material relationship disclosure, or
+contains private data. Accepted evidence remains attributed to its submitter;
+acceptance does not imply endorsement by either party.
+
+## Other contributions
+
+For MCP connection or documentation defects, open a regular issue with the
+smallest safe reproduction. For Agent Skill changes, follow the checks in the
+pull request template and include successful and denied-path evidence.

@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://handover.sh/benchmark/v1/independent-results/schema.json",
+  "title": "Independent AI Handoff Continuity Benchmark Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "benchmarkVersion",
+    "runId",
+    "runAt",
+    "submitter",
+    "environment",
+    "artifacts",
+    "declarations"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "benchmarkVersion": {
+      "const": "1.0.0-pilot"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "runAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "submitter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "relationship",
+        "disclosure"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "affiliation": {
+          "type": "string"
+        },
+        "relationship": {
+          "enum": [
+            "independent",
+            "customer",
+            "partner",
+            "employee",
+            "other"
+          ]
+        },
+        "disclosure": {
+          "type": "string",
+          "minLength": 30
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "model",
+        "modelVersion",
+        "interface",
+        "temperature",
+        "systemPrompt",
+        "toolsEnabled",
+        "browsingEnabled",
+        "memoryEnabled",
+        "retrievalEnabled",
+        "retryPolicy"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "modelVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interface": {
+          "type": "string",
+          "minLength": 1
+        },
+        "temperature": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "systemPrompt": {
+          "type": "string"
+        },
+        "toolsEnabled": {
+          "const": false
+        },
+        "browsingEnabled": {
+          "const": false
+        },
+        "memoryEnabled": {
+          "const": false
+        },
+        "retrievalEnabled": {
+          "const": false
+        },
+        "retryPolicy": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "submission",
+        "result",
+        "rawResponses",
+        "notes"
+      ],
+      "properties": {
+        "submission": {
+          "const": "submission.json"
+        },
+        "result": {
+          "const": "result.json"
+        },
+        "rawResponses": {
+          "const": "raw-responses"
+        },
+        "notes": {
+          "const": "README.md"
+        }
+      }
+    },
+    "declarations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allRunsIncluded",
+        "invalidResponsesPreserved",
+        "noUndeclaredRepairs",
+        "noPrivateData",
+        "license"
+      ],
+      "properties": {
+        "allRunsIncluded": {
+          "const": true
+        },
+        "invalidResponsesPreserved": {
+          "const": true
+        },
+        "noUndeclaredRepairs": {
+          "const": true
+        },
+        "noPrivateData": {
+          "const": true
+        },
+        "license": {
+          "const": "CC-BY-4.0"
+        }
+      }
+    }
+  }
+}
+

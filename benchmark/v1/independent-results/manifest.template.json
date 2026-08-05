@@ -1,0 +1,40 @@
+{
+  "$schema": "./schema.json",
+  "schemaVersion": "1.0",
+  "benchmarkVersion": "1.0.0-pilot",
+  "runId": "2026-08-05-provider-model",
+  "runAt": "2026-08-05T00:00:00.000Z",
+  "submitter": {
+    "name": "Researcher or organization name",
+    "affiliation": "Independent",
+    "relationship": "independent",
+    "disclosure": "No employment, funding, commercial, or personal relationship with Handover or 44pixels."
+  },
+  "environment": {
+    "provider": "Provider name",
+    "model": "Model name",
+    "modelVersion": "Exact model version",
+    "interface": "API or host and exact version",
+    "temperature": 0,
+    "systemPrompt": "Exact system prompt, or none",
+    "toolsEnabled": false,
+    "browsingEnabled": false,
+    "memoryEnabled": false,
+    "retrievalEnabled": false,
+    "retryPolicy": "No retries"
+  },
+  "artifacts": {
+    "submission": "submission.json",
+    "result": "result.json",
+    "rawResponses": "raw-responses",
+    "notes": "README.md"
+  },
+  "declarations": {
+    "allRunsIncluded": true,
+    "invalidResponsesPreserved": true,
+    "noUndeclaredRepairs": true,
+    "noPrivateData": true,
+    "license": "CC-BY-4.0"
+  }
+}
+

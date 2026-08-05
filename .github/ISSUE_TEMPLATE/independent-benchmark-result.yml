@@ -1,0 +1,84 @@
+name: Independent benchmark result
+description: Propose a reproducible third-party AI Handoff Continuity Benchmark run
+title: "[Independent result]: "
+labels:
+  - research
+  - independent-result
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing the benchmark independently. Do not include tokens, private prompts, customer data, or proprietary context. A result is reviewed only when its raw responses and deterministic score are publicly inspectable.
+  - type: input
+    id: package
+    attributes:
+      label: Public result package
+      description: Link to a pull request, repository, or immutable archive containing the manifest, submission, score, raw responses, and notes.
+      placeholder: https://github.com/...
+    validations:
+      required: true
+  - type: input
+    id: benchmark
+    attributes:
+      label: Benchmark release
+      description: The immutable benchmark release or commit used for the run.
+      value: https://github.com/44-pixels/handover-mcp/releases/tag/benchmark-v1.0.0
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Provider, model, and exact version
+      placeholder: Provider · model · version
+    validations:
+      required: true
+  - type: input
+    id: interface
+    attributes:
+      label: API or host
+      placeholder: API name and version, CLI and version, or host and version
+    validations:
+      required: true
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Relationship to Handover
+      description: Choose the closest material relationship. Explain it below.
+      options:
+        - Independent; no commercial or employment relationship
+        - Handover customer or user
+        - Partner or integration provider
+        - 44pixels employee or contractor
+        - Other material relationship
+    validations:
+      required: true
+  - type: textarea
+    id: disclosure
+    attributes:
+      label: Relationship and incentive disclosure
+      description: State who funded or performed the run and any reason the submitter may benefit from the result.
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Material limitations
+      description: Include run count, invalid outputs, retries, model access constraints, and anything that limits interpretation.
+    validations:
+      required: true
+  - type: checkboxes
+    id: declarations
+    attributes:
+      label: Reproducibility declarations
+      options:
+        - label: I used one fresh session per prompt with tools, browsing, memory, and retrieval disabled.
+          required: true
+        - label: I included every run, including invalid JSON, failed parses, and missing responses.
+          required: true
+        - label: I did not repair outputs unless the retry rule was declared before the run.
+          required: true
+        - label: The package contains no credentials, private context, customer data, or proprietary material.
+          required: true
+        - label: I permit redistribution of this evidence package under CC BY 4.0.
+          required: true
+

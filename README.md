@@ -36,6 +36,7 @@ validation.
 - [Agent-readable production index](https://handover.sh/research.json)
 - [Versioned repository index](research/v1/index.json)
 - [Citation metadata](research/v1/CITATION.cff)
+- [Run and submit an independent benchmark result](benchmark/v1/independent-results/)
 
 ## See a complete handoff
 

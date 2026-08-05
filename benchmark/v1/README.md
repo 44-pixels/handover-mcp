@@ -76,6 +76,23 @@ invalid JSON unless the retry rule was declared before the run.
 For a comparison, every model must receive the same dataset version and prompt
 files. Report all runs, including failed parses and missing responses.
 
+## Submit an independent result
+
+The
+[`independent-results/`](independent-results/)
+directory defines the public result package, relationship disclosure,
+raw-response requirements, deterministic validator, and submission route.
+Accepted evidence is listed separately from Handover's first-party pilot.
+
+```bash
+node benchmark/v1/independent-results/validate.mjs \
+  ./benchmark/v1/independent-results/YYYY-MM-DD-provider-model
+```
+
+Package validation recomputes the score and verifies completeness. It does not
+prove model provenance or experimental compliance; those declarations remain
+visible for human review.
+
 ## Dataset limitations
 
 - The cases are authored, English-language simulations rather than sampled
