@@ -1,0 +1,225 @@
+{
+  "$schema": "./schema.json",
+  "schemaVersion": "1.0",
+  "version": "1.0.0",
+  "publishedAt": "2026-08-05",
+  "canonical": "https://handover.sh/research",
+  "productionIndex": "https://handover.sh/research.json",
+  "repository": "https://github.com/44-pixels/handover-mcp/tree/main/research/v1",
+  "license": "CC-BY-4.0",
+  "publisher": {
+    "name": "Handover by 44pixels",
+    "url": "https://handover.sh",
+    "relationship": "Handover and 44pixels created this package and benefit if structured handoffs and Handover are adopted."
+  },
+  "publicationPolicy": {
+    "inspectable": "Findings link to source, method, or structured artifacts.",
+    "bounded": "Material limitations and first-party relationships are explicit.",
+    "portable": "Evidence is published in reusable JSON, Markdown, CSV, SQL, or code where possible."
+  },
+  "items": [
+    {
+      "id": "ai-handoff-continuity-benchmark",
+      "type": "dataset",
+      "title": "AI Handoff Continuity Benchmark",
+      "status": "open-pilot",
+      "measuredAt": "2026-08-04",
+      "canonicalUrl": "https://handover.sh/benchmark",
+      "repositoryPath": "benchmark/v1",
+      "provenance": "first-party authored benchmark",
+      "finding": "In a two-system authored pilot, structured handoffs scored 79.45, compared with 76.67 for conversation transcripts and 45.00 for compressed memory.",
+      "metrics": [
+        {
+          "label": "structured handoff mean score",
+          "value": 79.45
+        },
+        {
+          "label": "conversation transcript mean score",
+          "value": 76.67
+        },
+        {
+          "label": "compressed memory mean score",
+          "value": 45
+        }
+      ],
+      "artifacts": [
+        {
+          "label": "Dataset",
+          "format": "JSON",
+          "url": "https://handover.sh/benchmark/v1/dataset.json",
+          "repositoryPath": "benchmark/v1/dataset.json"
+        },
+        {
+          "label": "Result table",
+          "format": "CSV",
+          "url": "https://handover.sh/benchmark/v1/results/2026-08-04/summary.csv",
+          "repositoryPath": "benchmark/v1/results/2026-08-04/summary.csv"
+        },
+        {
+          "label": "Reproducibility record",
+          "format": "Markdown",
+          "url": "https://handover.sh/benchmark/v1/results/2026-08-04/README.md",
+          "repositoryPath": "benchmark/v1/results/2026-08-04/README.md"
+        }
+      ],
+      "limitations": [
+        "Three authored cases and one run per model system do not estimate variance.",
+        "Candidate selection measures state recovery rather than free-form task quality.",
+        "Handover created the benchmark and benefits if structured handoffs perform well."
+      ]
+    },
+    {
+      "id": "reporter-migration-field-report",
+      "type": "field-report",
+      "title": "Reporter to Handover migration",
+      "status": "migration-validating",
+      "measuredAt": "2026-08-05",
+      "canonicalUrl": "https://handover.sh/case-studies/44pixels-reporter-to-handover-migration",
+      "repositoryPath": "research/v1/reporter-migration-field-report.md",
+      "provenance": "first-party production field report",
+      "finding": "44pixels inventoried 1,497 source reports and verified 1,370 Handover records. All 400 comparable file hashes matched; 127 reports remained blocked for review.",
+      "metrics": [
+        {
+          "label": "reports inventoried",
+          "value": 1497
+        },
+        {
+          "label": "records verified",
+          "value": 1370
+        },
+        {
+          "label": "comparable hashes matched",
+          "value": "400 / 400"
+        },
+        {
+          "label": "reports blocked for review",
+          "value": 127
+        }
+      ],
+      "artifacts": [
+        {
+          "label": "Field report",
+          "format": "HTML",
+          "url": "https://handover.sh/case-studies/44pixels-reporter-to-handover-migration"
+        },
+        {
+          "label": "Agent evidence",
+          "format": "JSON",
+          "url": "https://handover.sh/case-studies.json"
+        },
+        {
+          "label": "Migration checklist",
+          "format": "Markdown",
+          "url": "https://handover.sh/examples/static-report-migration-checklist.md"
+        }
+      ],
+      "limitations": [
+        "This is a first-party case study about one internal production corpus.",
+        "The migration remains blocked while ambiguous and restricted records are reviewed.",
+        "Digest checks prove byte equality for comparable files, not semantic equivalence of every report."
+      ]
+    },
+    {
+      "id": "handoff-continuity-record",
+      "type": "protocol",
+      "title": "Handoff Continuity Record v1.0",
+      "status": "stable",
+      "measuredAt": "2026-08-03",
+      "canonicalUrl": "https://handover.sh/protocol",
+      "repositoryPath": "protocol/v1",
+      "provenance": "first-party open protocol",
+      "finding": "The stable v1.0 format separates continuation state from routing, transport, authentication, storage, and tool invocation.",
+      "metrics": [
+        {
+          "label": "stable version",
+          "value": "1.0"
+        },
+        {
+          "label": "continuity sections",
+          "value": 8
+        },
+        {
+          "label": "software license",
+          "value": "MIT"
+        }
+      ],
+      "artifacts": [
+        {
+          "label": "JSON Schema",
+          "format": "JSON",
+          "url": "https://handover.sh/protocol/v1/schema.json",
+          "repositoryPath": "protocol/v1/schema.json"
+        },
+        {
+          "label": "Valid example",
+          "format": "JSON",
+          "url": "https://handover.sh/protocol/v1/example.json",
+          "repositoryPath": "protocol/v1/example.json"
+        },
+        {
+          "label": "Validator",
+          "format": "JavaScript",
+          "url": "https://handover.sh/protocol/v1/validate.mjs",
+          "repositoryPath": "protocol/v1/validate.mjs"
+        }
+      ],
+      "limitations": [
+        "The protocol does not define transport, routing, authentication, or storage.",
+        "Structural conformance does not prove the evidence is true or complete.",
+        "Receivers must still verify access, freshness, and acceptance criteria."
+      ]
+    },
+    {
+      "id": "public-continuation-demo",
+      "type": "runnable-demo",
+      "title": "Human-agent continuation demo",
+      "status": "public",
+      "measuredAt": "2026-08-03",
+      "canonicalUrl": "https://handover.sh/demo",
+      "repositoryPath": "DEMO.md",
+      "provenance": "first-party curated demonstration",
+      "finding": "The demo exposes the same continuation record to a human reader and a receiving agent through HTML, JSON, Markdown, SQL, and a bounded successor prompt.",
+      "metrics": [
+        {
+          "label": "actors",
+          "value": 3
+        },
+        {
+          "label": "revisions",
+          "value": 3
+        },
+        {
+          "label": "resolved reviews",
+          "value": 1
+        }
+      ],
+      "artifacts": [
+        {
+          "label": "Demo manifest",
+          "format": "JSON",
+          "url": "https://handover.sh/demo.json"
+        },
+        {
+          "label": "Context",
+          "format": "Markdown",
+          "url": "https://handover.sh/demo/context.md"
+        },
+        {
+          "label": "Inventory query",
+          "format": "SQL",
+          "url": "https://handover.sh/demo/inventory.sql"
+        },
+        {
+          "label": "Successor prompt",
+          "format": "Markdown",
+          "url": "https://handover.sh/demo/prompt.md"
+        }
+      ],
+      "limitations": [
+        "The demo is a curated public workflow rather than an independent user study.",
+        "It demonstrates inspectability and continuation mechanics, not task-quality improvement.",
+        "Production access policy and private organization data are intentionally excluded."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://handover.sh/research/v1/schema.json",
+  "title": "Handover Research and Evidence Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "version",
+    "publishedAt",
+    "canonical",
+    "productionIndex",
+    "repository",
+    "license",
+    "publisher",
+    "publicationPolicy",
+    "items"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^1\\.0\\.\\d+$"
+    },
+    "publishedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "canonical": {
+      "type": "string",
+      "format": "uri"
+    },
+    "productionIndex": {
+      "type": "string",
+      "format": "uri"
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri"
+    },
+    "license": {
+      "const": "CC-BY-4.0"
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "url",
+        "relationship"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "relationship": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "publicationPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inspectable",
+        "bounded",
+        "portable"
+      ],
+      "properties": {
+        "inspectable": {
+          "type": "string"
+        },
+        "bounded": {
+          "type": "string"
+        },
+        "portable": {
+          "type": "string"
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "title",
+        "status",
+        "measuredAt",
+        "canonicalUrl",
+        "repositoryPath",
+        "provenance",
+        "finding",
+        "metrics",
+        "artifacts",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "type": {
+          "enum": [
+            "dataset",
+            "field-report",
+            "protocol",
+            "runnable-demo"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measuredAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "canonicalUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "repositoryPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "type": "string",
+          "pattern": "^first-party"
+        },
+        "finding": {
+          "type": "string",
+          "minLength": 20
+        },
+        "metrics": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "value"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            }
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "format",
+              "url"
+            ],
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "format": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "repositoryPath": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 20
+          }
+        }
+      }
+    }
+  }
+}

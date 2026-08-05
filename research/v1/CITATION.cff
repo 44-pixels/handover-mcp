@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this evidence index, cite it using the metadata below."
+title: "Handover Research and Evidence Index"
+type: dataset
+authors:
+  - family-names: "Yasour"
+    given-names: "Noam"
+version: 1.0.0
+date-released: 2026-08-05
+url: "https://handover.sh/research"
+repository-code: "https://github.com/44-pixels/handover-mcp/tree/main/research/v1"
+license: CC-BY-4.0
+abstract: >-
+  A versioned, first-party index of Handover's open AI handoff continuity
+  benchmark, Reporter migration field report, Handoff Continuity Record, and
+  runnable human-agent continuation demo, including findings, source
+  artifacts, provenance, and material limitations.
+keywords:
+  - AI agent handoff
+  - context engineering
+  - Model Context Protocol
+  - human-agent collaboration
+  - continuity benchmark

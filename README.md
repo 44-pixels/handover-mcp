@@ -17,6 +17,26 @@ connection record for those interfaces.
 
 ![Handover product interface](https://handover.sh/og.png)
 
+## Research and evidence
+
+The [Handover research and evidence
+index](https://handover.sh/research?utm_source=github&utm_medium=referral&utm_campaign=research_evidence)
+collects the open continuity benchmark, Reporter migration field report,
+Handoff Continuity Record, and runnable continuation demo. Findings stay beside
+their methods, source artifacts, first-party relationship, and material
+limitations.
+
+The versioned [`research/v1/`](research/v1/) package gives agents and
+researchers a stable JSON index, JSON Schema, citation metadata, and a bounded
+Markdown summary. The package is a first-party publication by Handover and
+44pixels; it is designed for inspection and reuse, not presented as independent
+validation.
+
+- [Human research index](https://handover.sh/research?utm_source=github&utm_medium=referral&utm_campaign=research_evidence)
+- [Agent-readable production index](https://handover.sh/research.json)
+- [Versioned repository index](research/v1/index.json)
+- [Citation metadata](research/v1/CITATION.cff)
+
 ## See a complete handoff
 
 The [public continuation
